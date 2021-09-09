@@ -48,54 +48,49 @@ end
 
 function DrawWinnerWindow(self)
 
-
-        coverDesk = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
+    coverDesk = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk:setFillColor(0,0,0, 250)
-        coverDesk:setReferencePoint( display.CenterCenterReferencePoint)
-        coverDesk.x=display.contentWidth*0.5
-        coverDesk.y=display.contentHeight*0.5--0
-        coverDesk.alpha=0
+    coverDesk.x=display.contentWidth*0.5
+    coverDesk.y=display.contentHeight*0.5--0
+    coverDesk.alpha=0
 
-        AllTransition[#AllTransition+1]=transition.to( coverDesk, { time=500, alpha=0.8 } )
-                    
-                        
+    AllTransition[#AllTransition+1]=transition.to( coverDesk, { time=500, alpha=0.8 } )
+    
 	winner_window = display.newGroup();
 
-        winner_window.width= 400
-        winner_window.height= 300
+    winner_window.width= 400
+    winner_window.height= 300
         
 	winner_window.x =display.contentWidth*0.5-200
-	winner_window.y =-300-- 0-winner_window.height
-        winner_window.alpha=1
+	winner_window.y = -300
+    winner_window.alpha=1
         
+    local board = display.newImageRect( "src/images/stages/stage.jpg",400,350 )
 
-
-        
-        local board = display.newImageRect( "src/images/stages/stage.jpg",400,350 )
-
-        board:setReferencePoint( display.TopLeftReferencePoint )
-        board.x=0
-        board.y=0
+	board.anchorX = 0
+	board.anchorY = 0
+    
+    board.x=0
+    board.y=0
 	winner_window:insert (board)
 
+    local onSimulator = system.getInfo( "environment" ) == "simulator"
+    local platformVersion = system.getInfo( "platformVersion" )
+    local olderVersion = tonumber(string.sub( platformVersion, 1, 1 )) < 4
+    local fontName = "Grinched"
+    local fontSize = 50
 
-        local onSimulator = system.getInfo( "environment" ) == "simulator"
-        local platformVersion = system.getInfo( "platformVersion" )
-        local olderVersion = tonumber(string.sub( platformVersion, 1, 1 )) < 4
-        local fontName = "Grinched"
-        local fontSize = 50
-
-
-        local txt=nil;
-        local ox=0;
-        if(thegame.GameLanguage=="rus") then
+    local txt=nil;
+    local ox=0;
+    
+    if(thegame.GameLanguage=="rus") then
             fontName = "Basic Comical NC"
             txt="Мышь в ловушке!";
             fontSize=36
             ox=10;
-        else
+    else
             txt="Mouse in Trap!";
-        end
+    end
 
         local myText = display.newText( txt, 0, 0, fontName, fontSize )
         
@@ -147,19 +142,24 @@ function DrawGoldenFaces(self)
         local gfw=goldenfacegrey1.width*0.5
         local gfx=winner_window.width*0.5-gfw
 
-        goldenfacegrey1:setReferencePoint( display.TopLeftReferencePoint )
+		goldenfacegrey1.anchorX = 0
+		goldenfacegrey1.anchorY = 0
+		
         goldenfacegrey1.x=gfx-gfw*1.9
         goldenfacegrey1.y=100
         winner_window:insert (goldenfacegrey1)
         
         local goldenfacegrey2 = display.newImageRect( "src/images/medals/golden_face_grey.png",98,84 )
-        goldenfacegrey2:setReferencePoint( display.TopLeftReferencePoint )
+        goldenfacegrey2.anchorX = 0
+		goldenfacegrey2.anchorY = 0
         goldenfacegrey2.x=gfx
         goldenfacegrey2.y=100
         winner_window:insert (goldenfacegrey2)
         
         local goldenfacegrey3 = display.newImageRect( "src/images/medals/golden_face_grey.png",98,84 )
-        goldenfacegrey3:setReferencePoint( display.TopLeftReferencePoint )
+
+		goldenfacegrey3.anchorX = 0
+		goldenfacegrey3.anchorY = 0
         goldenfacegrey3.x=gfx+gfw*1.9
         goldenfacegrey3.y=100
         winner_window:insert (goldenfacegrey3)
@@ -167,7 +167,9 @@ function DrawGoldenFaces(self)
             
         if(NumberOfStars>0) then
             local goldenface1 = display.newImageRect( "src/images/medals/golden_face.png",98,84 )            
-            goldenface1:setReferencePoint( display.TopLeftReferencePoint )
+            
+			goldenface1.anchorX = 0
+			goldenface1.anchorY = 0
             goldenface1.x=gfx-1000
             goldenface1.y=-100
             goldenface1.alpha=0.5
@@ -188,7 +190,10 @@ function DrawGoldenFaces(self)
                 
         if(NumberOfStars>1) then
             local goldenface2 = display.newImageRect( "src/images/medals/golden_face.png",98,84 )
-            goldenface2:setReferencePoint( display.TopLeftReferencePoint )
+            
+			goldenface2.anchorX = 0
+			goldenface2.anchorY = 0
+			
             goldenface2.x=gfx
             goldenface2.y=-300
             goldenface2.alpha=0.5
@@ -206,7 +211,10 @@ function DrawGoldenFaces(self)
 
         if(NumberOfStars>2) then
             local goldenface3 = display.newImageRect( "src/images/medals/golden_face.png",98,84 )
-            goldenface3:setReferencePoint( display.TopLeftReferencePoint )
+            			
+			goldenface3.anchorX = 0
+			goldenface3.anchorY = 0
+			
             goldenface3.x=gfx+1000
             goldenface3.y=-100
             goldenface3.alpha=0.5
@@ -238,9 +246,6 @@ function createButtons(self)
         height=50
     }
     winner_window:insert (ButtonMenu)
-    --ButtonMenu:setReferencePoint( display.CenterLeftReferencePoint )
-    --ButtonMenu.x =c-ButtonMenu.width*1.5
-    --ButtonMenu.y =y
 
     ButtonReplay = widget.newButton{
         left=c,top=y,
@@ -349,14 +354,16 @@ end
 
 local function ReplayEvent()
         
-        coverDesk2 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
+    coverDesk2 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk2:setFillColor(0,0,0, 250)
-        coverDesk2:setReferencePoint( display.TopCenterReferencePoint)
-        coverDesk2.x=display.contentWidth*0.5
-        coverDesk2.y=0
-        coverDesk2.alpha=0
-        AllTransition[#AllTransition+1]=transition.to( coverDesk2, { time=200, alpha=0.9 } )
-        Timers[#Timers+1]=timer.performWithDelay(200,DoReplay,1)
+    	
+	coverDesk2.anchorY = 0
+		
+    coverDesk2.x=display.contentWidth*0.5
+    coverDesk2.y=0
+    coverDesk2.alpha=0
+    AllTransition[#AllTransition+1]=transition.to( coverDesk2, { time=200, alpha=0.9 } )
+    Timers[#Timers+1]=timer.performWithDelay(200,DoReplay,1)
 end
 
 function Replay(event)
@@ -371,17 +378,15 @@ function Next(event)
         Runtime:removeEventListener( "key", onKeyEvent )
         
         coverDesk3 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
-	coverDesk3:setFillColor(0,0,0, 250)
-        coverDesk3:setReferencePoint( display.TopCenterReferencePoint)
+		coverDesk3:setFillColor(0,0,0, 250)
+        
+		coverDesk3.anchorY = 0    
         coverDesk3.x=display.contentWidth*0.5
         coverDesk3.y=0
         coverDesk3.alpha=0
         AllTransition[#AllTransition+1]=transition.to( coverDesk3, { time=200, alpha=0.9 } )
         Timers[#Timers+1]=timer.performWithDelay(200,DoNext,1)
-        
-  
-                
-   end
+    end
 end
 
 local function doMenu()

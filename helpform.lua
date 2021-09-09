@@ -51,30 +51,26 @@ end
     
 local function DrawHelpWindow(self)
 
-
-        coverDeskHelp = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
+    coverDeskHelp = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDeskHelp:setFillColor(0,0,0, 250)
-        coverDeskHelp:setReferencePoint( display.CenterCenterReferencePoint)
-        coverDeskHelp.x=display.contentWidth*0.5
-        coverDeskHelp.y=display.contentHeight*0.5
-        coverDeskHelp.alpha=0
+    coverDeskHelp.x=display.contentWidth*0.5
+    coverDeskHelp.y=display.contentHeight*0.5
+    coverDeskHelp.alpha=0
         
 	help_window = display.newGroup();
 
-        help_window.width= 400
-        help_window.height= 300
+    help_window.width= 400
+    help_window.height= 300
 
 	help_window.x =display.contentWidth*0.5---help_window.width*0.5
 	help_window.y =0
-        help_window.alpha=1
+    help_window.alpha=1
         
-        createButtons()
+    createButtons()
         
-        local fontName = "Grinched";
+    local fontName = "Grinched";
 
-        --local fontSize = 30
-        --local space=6
-        local gameDescription={};
+    local gameDescription={};
 
 --[[
 local fonts = native.getFontNames()
@@ -185,8 +181,7 @@ end
 
             local myText = display.newText( gameDescription[i] , 0, 0,400,DescHeight[i], fontName, FontSize[i]);
             
-
-            myText:setReferencePoint( display.TopCenterReferencePoint );  
+			myText.anchorY = 0
             myText.X=x;
             myText.y=y;
             if(Colors[i]==1) then
@@ -212,10 +207,8 @@ end
     
 local function DrawHelpWindow_Old(self)
 
-
-        coverDeskHelp = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
-	coverDeskHelp:setFillColor(0,0,0, 250)
-        coverDeskHelp:setReferencePoint( display.CenterCenterReferencePoint)
+		coverDeskHelp = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
+		coverDeskHelp:setFillColor(0,0,0, 250)
         coverDeskHelp.x=display.contentWidth*0.5
         coverDeskHelp.y=display.contentHeight*0.5
         coverDeskHelp.alpha=0
@@ -239,7 +232,6 @@ local function DrawHelpWindow_Old(self)
         local space=6
         
         local myText1 = display.newText( "Help", 0, 0, fontName, fontSize )
-        myText1:setReferencePoint( display.CenterCenterReferencePoint )
         myText1.x=0--help_window.width*0.5
         myText1.y=30
         myText1:setTextColor(255,200,0)
@@ -248,67 +240,54 @@ local function DrawHelpWindow_Old(self)
         help_window:insert (myText1) 
         
         local myText2 = display.newText( "Game Objective:", 0, 0, fontName, 22)
-        myText2:setReferencePoint( display.CenterCenterReferencePoint )
         myText2.x=0
         myText2.y=myText1.y+myText1.height+space*2
         myText2:setTextColor(0,200,255)
         help_window:insert (myText2)
         
         local myText3 = display.newText( "Force the mouse to go into the trap.", 0, 0, fontName, 20)
-        myText3:setReferencePoint( display.CenterCenterReferencePoint )
         myText3.x=0
         myText3.y=myText2.y+myText2.height+space
         myText3:setTextColor(255,255,255)
         help_window:insert (myText3)
         
-
-
         local myText4 = display.newText( "How?", 0, 0, fontName, 22)
-        myText4:setReferencePoint( display.CenterCenterReferencePoint )
         myText4.x=0
         myText4.y=myText3.y+myText3.height+space*2
         myText4:setTextColor(0,200,255)
         help_window:insert (myText4)
         
         local myText5 = display.newText( "By throwing to it everything that comes to hand.", 0, 0, fontName, 20)
-        myText5:setReferencePoint( display.CenterCenterReferencePoint )
         myText5.x=0
         myText5.y=myText4.y+myText4.height+space
         myText5:setTextColor(255,255,255)
         help_window:insert (myText5)
-        
-        
 
         local myText6 = display.newText( "But how?", 0, 0, fontName, 22)
-        myText6:setReferencePoint( display.CenterCenterReferencePoint )
         myText6.x=0
         myText6.y=myText5.y+myText5.height+space*2
         myText6:setTextColor(0,200,255)
         help_window:insert (myText6)
         
         local myText7 = display.newText( "By drawing a line on the screen to show the angle and force.", 0, 0, fontName, 20)
-        myText7:setReferencePoint( display.CenterCenterReferencePoint )
         myText7.x=0
         myText7.y=myText6.y+myText6.height+space
         myText7:setTextColor(255,255,255)
         help_window:insert (myText7)
         
         local myText8 = display.newText( "Longer the line and faster you draw more force", 0, 0, fontName, 20)
-        myText8:setReferencePoint( display.CenterCenterReferencePoint )
         myText8.x=0
         myText8.y=myText7.y+myText7.height+space
         myText8:setTextColor(255,255,255)
         help_window:insert (myText8)
         
         local myText9 = display.newText( "will be applied to the object.", 0, 0, fontName, 20)
-        myText9:setReferencePoint( display.CenterCenterReferencePoint )
         myText9.x=0
         myText9.y=myText8.y+myText8.height+space
         myText9:setTextColor(255,255,255)
         help_window:insert (myText9)
 
         AllTransition[#AllTransition+1]=transition.to( coverDeskHelp, { time=500, alpha=0.85 } )
-                    
 end
 
 function DoBack(self)
@@ -316,8 +295,6 @@ function DoBack(self)
     
     display.remove(coverDeskHelp)
     coverDeskHelp=nil
-    
-
 
     display.remove(help_window)
     help_window=nil
@@ -326,15 +303,12 @@ function DoBack(self)
     help_scroll=nil
 
     mainmenu:ShowCoverButtons()
-
 end
 
 local function BackEvent()
     Runtime:removeEventListener( "key", onKeyEvent )
     display.remove( ButtonBack)
     ButtonBack=nil
-    
-    
     
     AllTransition[#AllTransition+1]=transition.to( coverDeskSettings, { time=200, alpha=0 } )
     Timers[#Timers]=timer.performWithDelay(200,DoBack,1)

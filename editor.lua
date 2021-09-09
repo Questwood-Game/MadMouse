@@ -114,18 +114,19 @@ moveScreenRightButton = widget.newButton{
 
 
 	EditModeSelector = display.newRect(0, 0, 60,42)
-	EditModeSelector:setReferencePoint( display.TopLeftReferencePoint )
+	EditModeSelector.anchorX = 0
+	EditModeSelector.anchorY = 0
 	EditModeSelector:setFillColor(0, 255,0, 0)
 
-DeleteBodyButton = widget.newButton{
-        left=display.contentWidth-50-10,top=display.contentHeight-50-2,
-	defaultFile = "src/images/buttons/button_50.png",
-	overFile = "src/images/buttons/buttonOver_50.png",
-	onRelease = DeleteBody,
-	label = "Delete",
-	labelColor = { default = { 255 } },
+	DeleteBodyButton = widget.newButton{
+		left=display.contentWidth-50-10,top=display.contentHeight-50-2,
+		defaultFile = "src/images/buttons/button_50.png",
+		overFile = "src/images/buttons/buttonOver_50.png",
+		onRelease = DeleteBody,
+		label = "Delete",
+		labelColor = { default = { 255 } },
         width=50,height=50,
-	emboss = true
+		emboss = true
 }
 
 
@@ -385,8 +386,6 @@ local function dropObject(event)
 						world.WorldSprites[#world.WorldSprites+1]=display.newImageRect( s.image ,s.width,s.height)
 				end
 			
-			
-				world.WorldSprites[#world.WorldSprites]:setReferencePoint( display.CenterCenterReferencePoint )
 				game:insert(world.WorldSprites[#world.WorldSprites])
 				world.WorldSprites[#world.WorldSprites].x=event.x-game.x
 				world.WorldSprites[#world.WorldSprites].y=event.y-game.y
@@ -402,12 +401,9 @@ local function dropObject(event)
                                     else
                                         physics.addBody (world.WorldSprites[#world.WorldSprites], {shape=s.shape, bounce = s.bounce, density=s.density, friction = s.friction})
                                     end
-                                    --physics.addBody (world.WorldSprites[#world.WorldSprites], {bounce = s.bounce, density=s.density, friction = s.friction})
 				end
 			end
-
 	end
-  
 end
 
 

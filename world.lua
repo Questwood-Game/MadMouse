@@ -52,11 +52,10 @@ function StopWinLose()
 end
 
 function removeTrap(self)
-                           
-       if(TrapM==nil) then
-           return false
-           
-       end
+
+    if(TrapM==nil) then
+        return false
+    end
        
         display.remove(TrapM)
         TrapM=nil
@@ -156,73 +155,57 @@ function SetBackground(self, layer)
 
     local bgCount=1
     for i,line in ipairs(BGSprites) do
-			
-                if BGSprites[i].layer==layer then
-                    bgCount=i
+
+        if BGSprites[i].layer==layer then
+			bgCount=i
 			background.bg[bgCount] = display.newImageRect( BGSprites[i].image,BGSprites[i].width, BGSprites[i].height)
-                        --background.bg[bgCount]:setFillColor(0, 255, 255    , 200)
-			--background.bg[bgCount].xScale = 1--BGSprites[i].xScale;
-                        --background.bg[bgCount].yScale = 1--BGSprites[i].yScale
-			background.bg[bgCount]:setReferencePoint( BGSprites[i].ReferencePoint )--BGSprites[i].ReferencePoint 
+			background.bg[bgCount].anchorY = BGSprites[i].height
+			
 			background.bg[bgCount].x = BGSprites[i].x;
-                        background.bg[bgCount].y = BGSprites[i].y
+            background.bg[bgCount].y = BGSprites[i].y
 			background.bg[bgCount].width=BGSprites[i].width;
-                        background.bg[bgCount].height=BGSprites[i].height
+            background.bg[bgCount].height=BGSprites[i].height
 			background.bg[bgCount].dx = BGSprites[i].dx
 			background.bg[bgCount].originalX=BGSprites[i].x
 			background.bg[bgCount].layer=BGSprites[i].layer
 
-                        bgCount=bgCount+1
-                        
-                end
-                
+            bgCount=bgCount+1
+        end
     end
-
-		
 end
 
 
 function SetWalls(self)
-		--Set World Walls
-                local CollisionFilter = { categoryBits = 1, maskBits = 3 } 
-                local CollisionFilterClose = { categoryBits = 4, maskBits = 3 } 
+		
+	--Set World Walls
+    local CollisionFilter = { categoryBits = 1, maskBits = 3 } 
+    local CollisionFilterClose = { categoryBits = 4, maskBits = 3 } 
 
-		for i,line in ipairs(WorldWalls) do
-			
-
-				game:insert(WorldWalls[i])
+	for i,line in ipairs(WorldWalls) do
+	
+		game:insert(WorldWalls[i])
 				
-                                if(WorldWalls[i].myName==nil)then 
-                                    WorldWalls[i].myName="Wall"
-                                    physics.addBody(WorldWalls[i], "static", { friction=WorldWalls[i].physics.friction, bounce=WorldWalls[i].physics.bounce, filter=CollisionFilter }  )
-                                else
-                                    
-                                    physics.addBody(WorldWalls[i], "static", { friction=WorldWalls[i].physics.friction, bounce=WorldWalls[i].physics.bounce, filter=CollisionFilterClose }  )
-                                end
-                                
-				
-                                
-			
+        if(WorldWalls[i].myName==nil)then 
+            WorldWalls[i].myName="Wall"
+            physics.addBody(WorldWalls[i], "static", { friction=WorldWalls[i].physics.friction, bounce=WorldWalls[i].physics.bounce, filter=CollisionFilter }  )
+        else
+            physics.addBody(WorldWalls[i], "static", { friction=WorldWalls[i].physics.friction, bounce=WorldWalls[i].physics.bounce, filter=CollisionFilterClose }  )
         end
-
-
+    end
 
     if(WatchVisible)then
         WatchCenter = display.newRect(0 ,0,10,10)
         WatchCenter:setFillColor(0,0,255,200)
-        WatchCenter:setReferencePoint( display.CenterCenterReferencePoint )
+        
         WatchCenter.x =0
         WatchCenter.y = 100
         WatchCenter.rotation=0
-        --game:insert(WatchCenter)
-    
+
         CurrentWatchCenter = display.newRect(0 ,0,10,10)
         CurrentWatchCenter:setFillColor(0,255,0,200)
-        CurrentWatchCenter:setReferencePoint( display.CenterCenterReferencePoint )
         CurrentWatchCenter.x =0
         CurrentWatchCenter.y = 80
         CurrentWatchCenter.rotation=0
-        --game:insert(CurrentWatchCenter)
     end
     
 		
@@ -269,48 +252,38 @@ local function closeTrap()
 	-- You Won !!!
 
 	TrapIsOpen=false
-        thegame:removeSkyDropListener()
+    thegame:removeSkyDropListener()
 
-        buttons:removeAllButtons();
-        thegame:cancelAlltimers();
+    buttons:removeAllButtons();
+    thegame:cancelAlltimers();
         
-        mousecharacter:StopMouse()
-        	
-	
-			local opacity=0
-			local weightSide=WorldSprites[TrapBodyIndex].width/8
+    mousecharacter:StopMouse()
+    
+	local opacity=0
+	local weightSide=WorldSprites[TrapBodyIndex].width/8
 
-	
-			-- drop stick
-			TrapStick.x=TrapStick.x-10*TrapDirection
-			TrapStick:setReferencePoint( display.CenterCenterReferencePoint )
-			TrapStick.rotation=-20*TrapDirection
-			TrapStick.myName="TrapStick"
-			physics.addBody (TrapStick, {bounce = 0.4, density=20, friction = 100})
-			TrapStick:applyForce( -1040*TrapDirection,0, TrapStick.x, TrapStick.y)
+	-- drop stick
+	TrapStick.x=TrapStick.x-10*TrapDirection
+	TrapStick.rotation=-20*TrapDirection
+	TrapStick.myName="TrapStick"
+	physics.addBody (TrapStick, {bounce = 0.4, density=20, friction = 100})
+	TrapStick:applyForce( -1040*TrapDirection,0, TrapStick.x, TrapStick.y)
                         
-                        TrapM:applyForce( 0,1040, TrapM.x, TrapM.y)
-			--TrapDoor.rotation=-70
-			--TrapDoorJoint.isLimitEnabled = false
-			--TrapDoorJoint:setRotationLimits( -200, 5)
-			--TrapDoor
-			--TrapDoor:applyForce( -100,0, TrapDoor.x, TrapDoor.y)
-                        --if(TrapLeg~=nil and TrapLeg.x~=nil) then
-                            display.remove(TrapLeg)
-                            TrapLeg=nil
-                        --end
-                        
-        mousecharacter:RemoveMiceVisor();
+    TrapM:applyForce( 0,1040, TrapM.x, TrapM.y)
+
+    display.remove(TrapLeg)
+    TrapLeg=nil
+
+    mousecharacter:RemoveMiceVisor();
         
-        if(thegame.PlaySound) then        
-            local availableChannel = audio.findFreeChannel()
-            local index=math.random( #thegame.trapSounds )
-            audio.setVolume( 1, { channel=availableChannel } )
-            audio.play( thegame.trapSounds[index], { channel=availableChannel } )
-        end
-        
-        Timers[#Timers]=timer.performWithDelay(1000,DoWin,1)
-        
+    if(thegame.PlaySound) then        
+		local availableChannel = audio.findFreeChannel()
+        local index=math.random( #thegame.trapSounds )
+        audio.setVolume( 1, { channel=availableChannel } )
+        audio.play( thegame.trapSounds[index], { channel=availableChannel } )
+    end
+       
+    Timers[#Timers]=timer.performWithDelay(1000,DoWin,1)
 end
 
 local function onTrapCollision( self, event )
@@ -370,10 +343,8 @@ end
 function setUserSensor(self, x, y)
 
     UserSensor=display.newRect(0, 0, 50, 70)
-    
     UserSensor:setFillColor(0, 255,255, 0)
 
-    UserSensor:setReferencePoint( display.CenterCenterReferencePoint )
     UserSensor.x=x
     UserSensor.y=y-25
     
@@ -383,7 +354,6 @@ function setUserSensor(self, x, y)
     physics.addBody (UserSensor, "static",{ isSensor = true})
     UserSensor.collision = onUserSensorCollision
     UserSensor:addEventListener( "collision", UserSensor )
-                        
 end
 
 function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
@@ -391,10 +361,9 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
         TrapDirection=direction
         local CollisionFilter = { categoryBits = 1, maskBits = 1 } 
 
-        
 			if TrapBodyIndex~=nil then
 				--cannot have more than one trap
-                                print("cannot have more than one trap")
+                    print("cannot have more than one trap")
 				return false
 				
 			end
@@ -408,7 +377,6 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 			local boxWidth=s.width--+s.width
 	
 			WorldSprites[#WorldSprites+1]=display.newRect(0 ,0,boxWidth,5)
-			WorldSprites[#WorldSprites]:setReferencePoint( display.CenterCenterReferencePoint )
 			WorldSprites[#WorldSprites]:setFillColor(50, 100,255, opacity)
 			game:insert(WorldSprites[#WorldSprites])
 			WorldSprites[#WorldSprites].x=x
@@ -421,8 +389,7 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 
 			--Counterweight
                        
-                        TrapM=display.newRect(0 ,0,5,5)
-			TrapM:setReferencePoint( display.CenterCenterReferencePoint )
+            TrapM=display.newRect(0,0,5,5)
 			TrapM:setFillColor(255, 0,0,opacity)
 			game:insert(TrapM)
 			TrapM.x=x-(s.width*0.5-5)*direction
@@ -431,27 +398,7 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 			TrapM.myName="TrapM"
 			physics.addBody (TrapM, {bounce = s.bounce, density=s.density*5, friction = s.friction, filter=CollisionFilter})
 			local TrapMJoint = physics.newJoint ( "weld", WorldSprites[#WorldSprites], TrapM, TrapM.x,y-10)
-			 --[[
-			]]--
-
-			--TrapDoor=display.newImageRect("trap_door.png" ,7,44)
-                        --[[
-			TrapDoor=display.newRect(0,0,7,44)
-			TrapDoor:setFillColor(0, 255,0, 95)
 			
-			
-			TrapDoor:setReferencePoint( display.BottomCenterReferencePoint )
-			TrapDoor.x=TrapM.x
-			TrapDoor.y=TrapM.y-10
-			game:insert(TrapDoor)
-			
-			--TrapDoor.rotation=-85
-			TrapDoor.myName="TrapDoor"
-			physics.addBody (TrapDoor, {bounce = 0.2, density=1, friction = 100})
-			TrapDoorJoint = physics.newJoint ( "pivot",TrapM, TrapDoor ,TrapDoor.x, TrapDoor.y)
-			--TrapDoorJoint.isLimitEnabled = false
-		--TrapDoorJoint:setRotationLimits( -5, 5)
-]]--
                         if trapImage==nil then
                             TrapImage =display.newImageRect( "src/images/traps/"..s.image ,s.width,s.height)
                         else
@@ -459,7 +406,7 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
                         end
 
 			
-			TrapImage:setReferencePoint( display.TopCenterReferencePoint )
+			TrapImage.anchorY = 0
 			game:insert(TrapImage)
 			TrapImage.x=WorldSprites[#WorldSprites].x
 			TrapImage.y=WorldSprites[#WorldSprites].y
@@ -467,7 +414,8 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 
 			---
 			TrapSensor=display.newRect(0, 0, s.width*0.5, s.height-10)
-			TrapSensor:setReferencePoint( display.TopCenterReferencePoint )
+			
+			TrapSensor.anchorY = 0
 			TrapSensor:setFillColor(0, 255,255, opacity)
 			game:insert(TrapSensor)
 			TrapSensor.x=WorldSprites[#WorldSprites].x
@@ -478,28 +426,22 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 			TrapSensor:addEventListener( "collision", TrapSensor )
 			---
 			
-			
-			
-			
-			
 			TrapSide1=display.newRect(0 ,0,5,s.height)
-			TrapSide1:setReferencePoint( display.CenterCenterReferencePoint )
+			
 			TrapSide1:setFillColor(50, 100,255, opacity)
 			game:insert(TrapSide1)
 			TrapSide1.x=x+(s.width*0.5)*direction
 			TrapSide1.y=y+s.height*0.5
 			
-			
-			
 			TrapSide1.myName="TrapSide"
 			physics.addBody (TrapSide1, {bounce = s.bounce, density=s.density, friction = s.friction, filter=CollisionFilter})
 			local TrapJoint1 = physics.newJoint ( "weld", WorldSprites[#WorldSprites], TrapSide1, x, y+s.height*0.5)
 			TrapJoint1.isLimitEnabled = true	
-	
-			
+
 			--Counterweight
 			TrapLeg=display.newRect(0 ,0,20,1)
-			TrapLeg:setReferencePoint( display.BottomCenterReferencePoint )
+			TrapLeg.anchorY = 1
+			
 			TrapLeg:setFillColor(255, 0,0, opacity)
 			game:insert(TrapLeg)
 			TrapLeg.x=x-(boxWidth*0.5-5)*direction
@@ -511,18 +453,13 @@ function dropTrap(self, s,typeIndex,x,y,rotation,direction,trapImage)
 			
 			
 			TrapStick =display.newImageRect("src/images/traps/trap_stick.png" ,12,50)
-			TrapStick:setReferencePoint( display.BottomCenterReferencePoint )
+			TrapStick.anchorY = 50
 			game:insert(TrapStick)
 			TrapStick.x=TrapLeg.x
 			TrapStick.y=TrapLeg.y
-			
 
 			WorldSprites[#WorldSprites].rotation=rotation
-	
 end
-
-
-
 
 local function getViewWidth(x)
         local minx=100000
@@ -533,16 +470,7 @@ local function getViewWidth(x)
             if x[i]<minx then minx=floor(x[i]); end
             if(x[i]>=maxx) then maxx=floor(x[i]); end
         end
-        --[[
-        if(wheel.x<minx) then minx=wheel.x;end
-        if(thegame.UserPositionX<minx) then minx=thegame.UserPositionX; end
-        if(world.WorldSprites[thegame.WatchForSprite].x<minx) then minx=world.WorldSprites[thegame.WatchForSprite].x; end
-        
-        if(wheel.x>=maxx) then maxx=wheel.x;end
-        if(thegame.UserPositionX>=maxx) then maxx=thegame.UserPositionX; end
-        if(world.WorldSprites[thegame.WatchForSprite].x>=maxx) then maxx=world.WorldSprites[thegame.WatchForSprite].x; end
-        ]]--
-        
+
         return {floor(maxx-minx),floor(minx+(maxx-minx)*0.5)}
 end
 

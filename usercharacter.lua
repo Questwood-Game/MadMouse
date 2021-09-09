@@ -41,17 +41,18 @@ local BodyTurnTimers={}
 local AllTransition={}
 
 local function CancelAllTransition()
-    for i=1, #AllTransition  do
-
+    
+	for i=1, #AllTransition  do
         transition.cancel(AllTransition[i])
         AllTransition[i]=nil
-
     end
+	
     i=nil
     AllTransition={}
 end
 
 function EraseAllTimers()
+
     CancelAllTransition()
     for i=1, #changeEyesTimers do
             timer.cancel( changeEyesTimers[i] ) 
@@ -122,15 +123,13 @@ function drawCharacter(self,x,y)
     xOffsets={face=7,face_r=3,faceeyes_front=-5,faceeyes_front_r=2,faceeyes_side=-11,faceeyes_side_r=11}
     yOffsets={face=-35,face_down=-32,face_up=-38,faceeyes_front=-34,faceeyes_front_down=-30,faceeyes_front_up=-36,faceeyes_side=-32,faceeyes_side_down=-30,faceeyes_side_up=-36}
 
-    ---32
     UpperLeg2 = display.newImageRect( folder.."user_lindsey_leg_upper2_front.png",12,19)
-    UpperLeg2:setReferencePoint(display.TopCenterReferencePoint);
+    UpperLeg2.anchorY = 0
     UpperLeg2.x=x-5
     UpperLeg2.y=y+10
     game:insert (UpperLeg2)
     
     LowerLeg2 = display.newImageRect( folder.."user_lindsey_leg_lower2_front.png",15,15)
-    LowerLeg2:setReferencePoint(display.CenterCenterReferencePoint);
     LowerLeg2.x=x-4
     LowerLeg2.y=y+30
     game:insert (LowerLeg2)
@@ -138,26 +137,25 @@ function drawCharacter(self,x,y)
 
     
     Waist = display.newImageRect(folder.."user_lindsey_waist_front.png",20,13)
-    Waist:setReferencePoint(display.CenterCenterReferencePoint);
     Waist.x=x
     Waist.y=y+14
     game:insert (Waist)
     
     UpperLeg1 = display.newImageRect( folder.."user_lindsey_leg_upper1_front.png",13,16)
-    UpperLeg1:setReferencePoint(display.TopCenterReferencePoint);
+    UpperLeg1.anchorY = 0
     UpperLeg1.x=x+8
     UpperLeg1.y=UpperLeg2.y+5
     game:insert (UpperLeg1)
     
     LowerLeg1 = display.newImageRect( folder.."user_lindsey_leg_lower1_front.png",16,14)
-    LowerLeg1:setReferencePoint(display.CenterCenterReferencePoint);
     LowerLeg1.x=x+11
     LowerLeg1.y=y+30
     game:insert (LowerLeg1)
     
     
     ArmLeft = display.newImageRect( folder.."user_lindsey_arm_bent_fist2_front.png",22,19)
-    ArmLeft:setReferencePoint(display.TopLeftReferencePoint);
+	ArmLeft.anchorX = 0
+	ArmLeft.anchorY = 0
     ArmLeft.x=x
     ArmLeft.y=y-12
     ArmLeft.xScale=-1
@@ -165,7 +163,10 @@ function drawCharacter(self,x,y)
     game:insert (ArmLeft)
 
     ArmRight = display.newImageRect( folder.."user_lindsey_arm_bent_fist2_front.png",22,19)
-    ArmRight:setReferencePoint(display.TopRightReferencePoint);
+    
+	ArmRight.anchorX = 22
+	ArmRight.anchorY = 0
+	
     ArmRight.x=x+27
     ArmRight.y=y-12
     ArmRight.xScale=1
@@ -173,16 +174,12 @@ function drawCharacter(self,x,y)
     game:insert (ArmRight)
     
     Torso = movieclip.newAnim({ folder.."user_lindsey_torso_front.png", folder.."user_lindsey_torso_side.png"},22,30)
-    Torso:setReferencePoint(display.CenterCenterReferencePoint);
     Torso.x=x
     Torso.y=y
     game:insert (Torso)
     
- 
-    
-    
     Neck = display.newImageRect(folder.."user_lindsey_neck_front.png",8,13);
-    Neck:setReferencePoint(display.CenterCenterReferencePoint);
+    
     Neck.x=x+4
     Neck.y=y-16
     game:insert (Neck)
@@ -196,36 +193,30 @@ function drawCharacter(self,x,y)
         Faces[i+7]=folder.."user_lindsey_face_"..i.."_side.png"
     end
     Face = movieclip.newAnim(Faces,72,44)    
-    
-    Face:setReferencePoint(display.CenterCenterReferencePoint);
     Face.x=x+xOffsets.face
     Face.y=y+yOffsets.face
     game:insert (Face)
     Face.isVisible = true;
 
     Face_FrontEyes = movieclip.newAnim({ folder.."user_lindsey_eyes_1_front.png",folder.."user_lindsey_eyes_2_front.png", folder.."user_lindsey_eyes_3_front.png" },26,14)
-    Face_FrontEyes:setReferencePoint(display.CenterCenterReferencePoint);
     Face_FrontEyes.x=Face.x+xOffsets.faceeyes_front
     Face_FrontEyes.y=y+yOffsets.faceeyes_front
     game:insert (Face_FrontEyes)
     Face_FrontEyes.isVisible = true;
     
     Face_SideEyes = movieclip.newAnim({ folder.."user_lindsey_eyes_1_side.png",folder.."user_lindsey_eyes_2_side.png", folder.."user_lindsey_eyes_3_side.png" },10,14)
-    Face_SideEyes:setReferencePoint(display.CenterCenterReferencePoint);
     Face_SideEyes.x=Face.x+xOffsets.faceeyes_side
     Face_SideEyes.y=y+yOffsets.faceeyes_side
     game:insert (Face_SideEyes)
     Face_SideEyes.isVisible = false;
     
     FootSide = display.newImageRect( folder.."user_lindsey_foot_side_front.png",20,8)
-    FootSide:setReferencePoint(display.CenterCenterReferencePoint);
     FootSide.x=x-7
     FootSide.y=y+39
     game:insert (FootSide)
     
     
     FootFront = display.newImageRect( folder.."user_lindsey_foot_front_front.png",19,10)
-    FootFront:setReferencePoint(display.CenterCenterReferencePoint);
     FootFront.x=x+16
     FootFront.y=y+39
     game:insert (FootFront)

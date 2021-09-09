@@ -12,7 +12,6 @@ local str = require("str")
 
 
 function saveLevel(void, filePath)
-
 	 	
 	 	local path=""
 	 	if  system.getInfo( "environment" ) =="simulator" then
@@ -173,7 +172,7 @@ function loadLevelFromString(void, dataStr)
                                                                                 world.NumberOfItems=world.NumberOfItems+1
 
 										world.WorldSprites[#world.WorldSprites+1]=display.newImageRect( "src/images/sprites/"..s.image,s.width,s.height  )
-										world.WorldSprites[#world.WorldSprites]:setReferencePoint( display.CenterCenterReferencePoint)
+										--world.WorldSprites[#world.WorldSprites]:setReferencePoint( display.CenterCenterReferencePoint)
 										game:insert(world.WorldSprites[#world.WorldSprites])
 										world.WorldSprites[#world.WorldSprites].x=onevalue[3]
 										world.WorldSprites[#world.WorldSprites].y=onevalue[4]
@@ -191,8 +190,7 @@ function loadLevelFromString(void, dataStr)
                                                                                             else
                                                                                                 physics.addBody (world.WorldSprites[#world.WorldSprites], {shape=s.shape, bounce = s.bounce, density=s.density, friction = s.friction,filter=CollisionFilter})
                                                                                             end
-                                                                                            
-											
+
 										end --if(s.radius>0) then
 		                        	end--if s.type=="trap" then
 	                        	end--if index~=-1 then 
@@ -200,14 +198,8 @@ function loadLevelFromString(void, dataStr)
                         end--if #onevalue>1 then
 
                 end
-                
-                
+
                 thegame:AddSoundListeners()
-                
-                --physics.start()
-        
-  	
-        	
 end
 
 

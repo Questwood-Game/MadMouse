@@ -250,8 +250,7 @@ function PauseGame(useDelay)
 
      
         coverDeskPause = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
-	coverDeskPause:setFillColor(0,0,0, 250)
-        coverDeskPause:setReferencePoint( display.CenterCenterReferencePoint)
+		coverDeskPause:setFillColor(0,0,0, 250)
         coverDeskPause.x=display.contentWidth*0.5
         coverDeskPause.y=display.contentHeight*0.5
         if useDelay then
@@ -272,14 +271,11 @@ function PauseGame(useDelay)
         end
 
         PauseText = display.newText(txt , 0, 0, fontName, fontSize )
-        PauseText:setReferencePoint( display.TopCenterReferencePoint)
+		PauseText.anchorY = 0
         PauseText.x=display.contentWidth*0.5
         PauseText.y=display.contentHeight*0.5-PauseText.height*0.5-20
-
         PauseText:setTextColor(255,200,0)
-        
-        
-              
+
         ButtonStart = widget.newButton{
             id="PlayButton",
             defaultFile = "src/images/buttons/button_play.png",
@@ -386,8 +382,7 @@ function QuitDialog(self)
  
      
         coverDeskQuit = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
-	coverDeskQuit:setFillColor(0,0,0, 250)
-        coverDeskQuit:setReferencePoint( display.CenterCenterReferencePoint)
+		coverDeskQuit:setFillColor(0,0,0, 250)
         coverDeskQuit.x=display.contentWidth*0.5
         coverDeskQuit.y=display.contentHeight*0.5
         coverDeskQuit.alpha=0
@@ -397,7 +392,7 @@ function QuitDialog(self)
         local fontSize = 36
 
         QuitText = display.newText( "Do you want to quit?", 0, 0, fontName, fontSize )
-        QuitText:setReferencePoint( display.TopCenterReferencePoint)
+		QuitText.anchorY = 0
         QuitText.x=display.contentWidth*0.5
         QuitText.y=display.contentHeight*0.5-QuitText.height*0.5-40
 

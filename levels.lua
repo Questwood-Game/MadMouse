@@ -75,149 +75,156 @@ local function CreateLevel_1() -- iPad compatible
     local x= display.contentWidth*0.5
 
     world.BGSprites[1]={image="src/images/levels/level_1_bg0.png"}
+	
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
-			world.BGSprites[1].ReferencePoint= display.BottomCenterReferencePoint 
+			world.BGSprites[1].anchorY = 456
 			world.BGSprites[1].x =x; world.BGSprites[1].y = display.contentHeight-33
 			world.BGSprites[1].width=1360;world.BGSprites[1].height=456
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
                         
-                        
-                        --buttom
-        		world.WorldWalls[1] = display.newRect(0 ,0,1476,16)
-        		world.WorldWalls[1]:setFillColor(0,0,255,0)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+            --buttom
+        	world.WorldWalls[1] = display.newRect(0 ,0,1476,16)
+        	world.WorldWalls[1]:setFillColor(0,0,1,0)
+			world.WorldWalls[1].anchorY = 16
 			world.WorldWalls[1].x =display.contentWidth*0.5 ;  world.WorldWalls[1].y = display.contentHeight-30
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
                                                 
-                       --right invisible roof
+            --right invisible roof
 			world.WorldWalls[2] = display.newRect(0 ,0,1476,16)
-			world.WorldWalls[2]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[2]:setFillColor(50/255,100/255,1, 0)
+			world.WorldWalls[2].anchorY = 16
 			world.WorldWalls[2].x =305 ;  world.WorldWalls[2].y = display.contentHeight-450
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=34
 			--left invisible roof
 			world.WorldWalls[3] = display.newRect(0 ,0,1476,16)
-			world.WorldWalls[3]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[3]:setFillColor(50/255, 100/255,1, 0)
+			world.WorldWalls[3].anchorY = 16
 			world.WorldWalls[3].x =180 ;  world.WorldWalls[3].y = display.contentHeight-450
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=-34
 			--shelfs
 			world.WorldWalls[4] = display.newRect(0 ,0,130,8)
-			world.WorldWalls[4]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[4]:setFillColor(50/255, 100/255,1, 0)
+			world.WorldWalls[4].anchorY = 8
 			world.WorldWalls[4].x =90 ;  world.WorldWalls[4].y = display.contentHeight-218
-                        world.WorldWalls[4].myName="CloseWall"
+            world.WorldWalls[4].myName="CloseWall"
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
 			
 			world.WorldWalls[5] = display.newRect(0 ,0,130,8)
-			world.WorldWalls[5]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[5]:setFillColor(50/255,100/255,1,0)
+			world.WorldWalls[5].anchorY = 8
 			world.WorldWalls[5].x =405 ;  world.WorldWalls[5].y = display.contentHeight-218
-                        world.WorldWalls[5].myName="CloseWall"
+            world.WorldWalls[5].myName="CloseWall"
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
 			
 			world.WorldWalls[6] = display.newRect(0 ,0,130,7)
-			world.WorldWalls[6]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[6]:setFillColor(50/255,100/255,1, 0)
+			world.WorldWalls[6].anchorY = 7
 			world.WorldWalls[6].x =90 ;  world.WorldWalls[6].y = display.contentHeight-278
-                        world.WorldWalls[6].myName="CloseWall"
+            world.WorldWalls[6].myName="CloseWall"
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
 
 			world.WorldWalls[7] = display.newRect(0 ,0,130,7)
-			world.WorldWalls[7]:setFillColor(50, 100,255, 0)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[7]:setFillColor(50/255,100/255,1, 0)
+			world.WorldWalls[7].anchorY = 7
 			world.WorldWalls[7].x =405 ;  world.WorldWalls[7].y = display.contentHeight-278
-                        world.WorldWalls[7].myName="CloseWall"
+            world.WorldWalls[7].myName="CloseWall"
 			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
-                        
-                        
+ 
+            --right hor roof - brown very small
+            world.WorldWalls[8] = display.newRect(0 ,0,100,84)
+        	world.WorldWalls[8]:setFillColor(120/255,95/255,66/255,1)
 
-                        
-                        --right hor roof - brown very small
-                        world.WorldWalls[8] = display.newRect(0 ,0,100,84)
-        		world.WorldWalls[8]:setFillColor(120, 95,66, 255)
-			world.WorldWalls[8]:setReferencePoint( display.BottomLeftReferencePoint )
+			world.WorldWalls[8].anchorX= 0
+			world.WorldWalls[8].anchorY = 84
 			world.WorldWalls[8].x =920 ;  world.WorldWalls[8].y = display.contentHeight
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=0
                         
-                        -- angle
-                        world.WorldWalls[9] = display.newRect(0 ,0,1690,80)
-			world.WorldWalls[9]:setFillColor(205, 127,75, 255)
-			world.WorldWalls[9]:setReferencePoint( display.BottomCenterReferencePoint )
+            -- angle
+            world.WorldWalls[9] = display.newRect(0 ,0,1690,80)
+			world.WorldWalls[9]:setFillColor(205/255,127/255,75/255,1)
+			
+			world.WorldWalls[9].anchorY = 80
+			
 			world.WorldWalls[9].x =366 ;  world.WorldWalls[9].y = display.contentHeight-445
 			world.WorldWalls[9].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[9].rotation=34
-                        --light brown  roof
-                        world.WorldWalls[10] = display.newRect(0 ,0,1000,84)
-        		world.WorldWalls[10]:setFillColor(205, 127,75, 255)
-			world.WorldWalls[10]:setReferencePoint( display.BottomLeftReferencePoint )
+            
+            --light brown  roof
+			world.WorldWalls[10] = display.newRect(0 ,0,1000,84)
+        	world.WorldWalls[10]:setFillColor(205/255,127/255,75/255,1)
+			
+			world.WorldWalls[10].anchorX= 0
+			world.WorldWalls[10].anchorY = 84
+			
 			world.WorldWalls[10].x =1005 ;  world.WorldWalls[10].y = display.contentHeight-27
 			world.WorldWalls[10].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[10].rotation=0
                         
                         
-                         --left hor roof - brown very small
-                        world.WorldWalls[11] = display.newRect(0 ,0,100,84)
-        		world.WorldWalls[11]:setFillColor(120, 95,66, 255)
-			world.WorldWalls[11]:setReferencePoint( display.BottomLeftReferencePoint )
+            --left hor roof - brown very small
+            world.WorldWalls[11] = display.newRect(0,0,100,84)
+        	world.WorldWalls[11]:setFillColor(120/255,95/255,66/255,1)
+			
+			world.WorldWalls[11].anchorX= 0
+			world.WorldWalls[11].anchorY = 84
+			
 			world.WorldWalls[11].x =-540 ;  world.WorldWalls[11].y = display.contentHeight
 			world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[11].rotation=0
                         
-                        -- left angle
-                        world.WorldWalls[12] = display.newRect(0 ,0,1690,85)
-			world.WorldWalls[12]:setFillColor(205, 127,75, 255)
-			world.WorldWalls[12]:setReferencePoint( display.BottomCenterReferencePoint )
+            -- left angle
+            world.WorldWalls[12] = display.newRect(0,0,1690,85)
+			world.WorldWalls[12]:setFillColor(205/255,127/255,75/255,1)
+			
+			world.WorldWalls[12].anchorY = 85
+			
 			world.WorldWalls[12].x =106 ;  world.WorldWalls[12].y = display.contentHeight-445
 			world.WorldWalls[12].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[12].rotation=-34
                         
-                        
-                        --left light brown  roof 
-                        world.WorldWalls[13] = display.newRect(0 ,0,1000,84)
-        		world.WorldWalls[13]:setFillColor(205, 127,75, 255)
-			world.WorldWalls[13]:setReferencePoint( display.BottomRightReferencePoint )
+            --left light brown  roof 
+            world.WorldWalls[13] = display.newRect(0 ,0,1000,84)
+        	world.WorldWalls[13]:setFillColor(205/255,127/255,75/255,1)
+			world.WorldWalls[13].anchorX= 1000
+			world.WorldWalls[13].anchorY = 84
+			
 			world.WorldWalls[13].x =-500 ;  world.WorldWalls[13].y = display.contentHeight-27
 			world.WorldWalls[13].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[13].rotation=0
                         
-                        
-                        
-                        
-                        
-                        -- dark brown  floor and roof
-                        world.WorldWalls[14] = display.newRect(0 ,0,3076,34)
-        		world.WorldWalls[14]:setFillColor(120, 95,66, 255)
-			world.WorldWalls[14]:setReferencePoint( display.BottomCenterReferencePoint )
+            -- dark brown  floor and roof
+            world.WorldWalls[14] = display.newRect(0 ,0,3076,34)
+        	world.WorldWalls[14]:setFillColor(120/255,95/255,66/255,1) --120
+			world.WorldWalls[14].anchorY = 34
+			
 			world.WorldWalls[14].x =display.contentWidth*0.5 ;  world.WorldWalls[14].y = display.contentHeight
 			world.WorldWalls[14].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[14].rotation=0
-                        
-                        
-                        --bottom wall 
-                        world.WorldWalls[15] = display.newRect(0 ,0,3000,200)
-                        world.WorldWalls[15]:setFillColor(127, 106,79, 255)
-                        --world.WorldWalls[15]:setFillColor(0, 0,255, 255)
-                        world.WorldWalls[15]:setReferencePoint( display.TopCenterReferencePoint )
-                        world.WorldWalls[15].x =-500
-                        world.WorldWalls[15].y = display.contentHeight-10
-                        world.WorldWalls[15].physics={ friction=0.5, bounce=0.3 } 
+            
+            --bottom wall 
+            world.WorldWalls[15] = display.newRect(0 ,0,3000,200)
+            world.WorldWalls[15]:setFillColor(127/255,106/255,79/255,1)
+			world.WorldWalls[15].anchorY = 0
+            world.WorldWalls[15].x =-500
+            world.WorldWalls[15].y = display.contentHeight-10
+            world.WorldWalls[15].physics={ friction=0.5, bounce=0.3 } 
 end
 
 local function CreateLevel_2() -- iPad compatible
-    ShowAds=false
-                         world.ScreenMinX=-450
-			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+    
+	ShowAds=false
+    world.ScreenMinX=-450
+	world.ScreenMaxX=450
+    local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_2_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -227,61 +234,60 @@ local function CreateLevel_2() -- iPad compatible
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
                         
-                        world.BGSprites[2]={image="src/images/levels/level_2_bg1.png"}
-                        world.BGSprites[2].xScale = 1; world.BGSprites[2].yScale = 1
+            world.BGSprites[2]={image="src/images/levels/level_2_bg1.png"}
+            world.BGSprites[2].xScale = 1; world.BGSprites[2].yScale = 1
 			world.BGSprites[2].ReferencePoint= display.BottomCenterReferencePoint 
 			world.BGSprites[2].x = display.contentWidth*0.5; world.BGSprites[2].y = display.contentHeight
 			world.BGSprites[2].width=341;world.BGSprites[2].height=392
 			world.BGSprites[2].dx = 1.03
 			world.BGSprites[2].layer=1
-                        
-                        
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,372,50)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 255)
-                        --world.WorldWalls[1]:setFillColor(0, 0,255, 255)
-                        
-			world.WorldWalls[1]:setReferencePoint( display.TopCenterReferencePoint )
+
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,372,50)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[1].anchorY = 0
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
-                        
-                        
-                        --- Big walls
-                        -- right wall
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,592)
-			world.WorldWalls[2]:setFillColor(78, 69,57, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomLeftReferencePoint )
+
+            --- Big walls
+            -- right wall
+            world.WorldWalls[2] = display.newRect(0 ,0,500,592)
+			world.WorldWalls[2]:setFillColor(78/255, 69/255,57/255, 1)
+			world.WorldWalls[2].anchorX = 0
+			world.WorldWalls[2].anchorY = 592
 			world.WorldWalls[2].x =x+183
-                        world.WorldWalls[2].y = display.contentHeight+50
+            world.WorldWalls[2].y = display.contentHeight+50
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,592)
-			world.WorldWalls[3]:setFillColor(78, 69,57, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomRightReferencePoint )
+            
+            --left wall
+            world.WorldWalls[3] = display.newRect(0 ,0,500,592)
+			world.WorldWalls[3]:setFillColor(78/255, 69/255,57/255, 1)
+			world.WorldWalls[3].anchorX = 500
+			world.WorldWalls[3].anchorY = 592
 			world.WorldWalls[3].x =x-183
-                        world.WorldWalls[3].y = display.contentHeight+50
+            world.WorldWalls[3].y = display.contentHeight+50
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
                         
-                        
-                        
-                        -- normall walls
-                        -- right wall
-                        world.WorldWalls[4] = display.newRect(0 ,0,16,392)
-			world.WorldWalls[4]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+            -- normall walls
+            -- right wall
+            world.WorldWalls[4] = display.newRect(0 ,0,16,392)
+			world.WorldWalls[4]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[4].anchorY = 392
 			world.WorldWalls[4].x =x+175
-                        world.WorldWalls[4].y = display.contentHeight
+            world.WorldWalls[4].y = display.contentHeight
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
-                        -- left wall
-                        world.WorldWalls[5] = display.newRect(0 ,0,16,392)
-			world.WorldWalls[5]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+                        
+			-- left wall
+            world.WorldWalls[5] = display.newRect(0 ,0,16,392)
+			world.WorldWalls[5]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[5].anchorY = 392
+			world.WorldWalls[5].anchorY = 392
 			world.WorldWalls[5].x =x-175
-                        world.WorldWalls[5].y = display.contentHeight
+            world.WorldWalls[5].y = display.contentHeight
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
                         --stairs
@@ -289,78 +295,48 @@ local function CreateLevel_2() -- iPad compatible
                         local stepY=display.contentHeight-202
                         
                         for i=1,5 do
-                                world.WorldWalls[5+i] = display.newRect(0 ,0,32,22)
-                                world.WorldWalls[5+i]:setFillColor(164, 46,23, 255)
-                                world.WorldWalls[5+i]:setReferencePoint( display.CenterCenterReferencePoint )
-                                world.WorldWalls[5+i].x = stepX+(i-1)*31
-                                world.WorldWalls[5+i].y = stepY+(i-1)*26
-                                --[[
-                                if i<3 then
-                                    world.WorldWalls[5+i]:setFillColor(164, 46,255, 200)
-                                    world.WorldWalls[5+i].myName="CloseWall"
-                                else
-                                    world.WorldWalls[5+i]:setFillColor(164, 46,23, 255)
-                                end
-                                ]]--
-                		world.WorldWalls[5+i].physics={ friction=0.5, bounce=0.3 } 
-        			world.WorldWalls[5+i].rotation=0
+                            world.WorldWalls[5+i] = display.newRect(0 ,0,32,22)
+                            world.WorldWalls[5+i]:setFillColor(164, 46,23, 255)
+                            world.WorldWalls[5+i].x = stepX+(i-1)*31
+                            world.WorldWalls[5+i].y = stepY+(i-1)*26
+							world.WorldWalls[5+i].physics={ friction=0.5, bounce=0.3 } 
+							world.WorldWalls[5+i].rotation=0
                         end
                         
-                        world.WorldWalls[11] = display.newRect(0 ,0,33,3)
-                        world.WorldWalls[11]:setFillColor(164, 46,23, 255)
-                        world.WorldWalls[11]:setReferencePoint( display.CenterCenterReferencePoint )
-                        world.WorldWalls[11].x = stepX+(5)*31
-                        world.WorldWalls[11].y = stepY+(5)*26-14
-                	world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
-        		world.WorldWalls[11].rotation=0
+            world.WorldWalls[11] = display.newRect(0 ,0,33,3)
+            world.WorldWalls[11]:setFillColor(164/255, 46/255,23/255, 1)
+            world.WorldWalls[11].x = stepX+(5)*31
+            world.WorldWalls[11].y = stepY+(5)*26-14
+            world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
+        	world.WorldWalls[11].rotation=0
                        
                         
-                        local stepX=x-88
-                        local stepY=display.contentHeight-262
-                        --[[
-                        for i=1,3 do
-                                world.WorldWalls[11+i] = display.newRect(0 ,0,31,5)
-                                world.WorldWalls[11+i]:setFillColor(139,50,18, 200)
-                                world.WorldWalls[11+i]:setReferencePoint( display.CenterCenterReferencePoint )
-                                world.WorldWalls[11+i].x = stepX+(i-1)*31
-                                world.WorldWalls[11+i].y = stepY-(i-1)*26
-                		world.WorldWalls[11+i].physics={ friction=0.5, bounce=0.3 } 
-        			world.WorldWalls[11+i].rotation=0
-                        end
-                        ]]--
-                        -- last stair
-                        world.WorldWalls[12] = display.newRect(0 ,0,100,10)
-                        world.WorldWalls[12]:setFillColor(164, 46,23, 255)
-                        world.WorldWalls[12]:setReferencePoint( display.CenterCenterReferencePoint )
-                        world.WorldWalls[12].x = x-117
-                        
-                        world.WorldWalls[12].y = stepY+54
-                        --world.WorldWalls[12].myName="CloseWall"
-                	world.WorldWalls[12].physics={ friction=0.5, bounce=0.3 } 
-        		world.WorldWalls[12].rotation=0
+            local stepX=x-88
+            local stepY=display.contentHeight-262
 
-        
-                        --top
-                        world.WorldWalls[13] = display.newRect(0 ,0,341,70)
-			world.WorldWalls[13]:setFillColor(127, 106,79, 255)
+            -- last stair
+            world.WorldWalls[12] = display.newRect(0 ,0,100,10)
+            world.WorldWalls[12]:setFillColor(164/255, 46/255,23/255, 1)
+            world.WorldWalls[12].x = x-117
                         
-			world.WorldWalls[13]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[12].y = stepY+54
+            world.WorldWalls[12].physics={ friction=0.5, bounce=0.3 } 
+        	world.WorldWalls[12].rotation=0
+
+            --top
+            world.WorldWalls[13] = display.newRect(0 ,0,341,70)
+			world.WorldWalls[13]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[13].anchorY = 70
 			world.WorldWalls[13].x =x ;  world.WorldWalls[13].y = display.contentHeight-350
 			world.WorldWalls[13].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[13].rotation=0
-                        
-                        
-                        
-                   
-        
-           
 end
 
 local function CreateLevel_3() -- iPad compatible
     ShowAds=false
         world.ScreenMinX=-450
 			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+            local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_3_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -370,110 +346,106 @@ local function CreateLevel_3() -- iPad compatible
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
                         
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+65
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
 
                         
-                        --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+            --right wall 
+            world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
 			world.WorldWalls[2].x =x+615
-                        world.WorldWalls[2].y = display.contentHeight
+            world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+            
+            --left wall
+			world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
 			world.WorldWalls[3].x =x-615
-                        world.WorldWalls[3].y = display.contentHeight
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
                         
-                        --Bed Floor
-                        world.WorldWalls[4] = display.newRect(0 ,0,225,5)
-			world.WorldWalls[4]:setFillColor(255, 0,0,0)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+            --Bed Floor
+            world.WorldWalls[4] = display.newRect(0 ,0,225,5)
+			world.WorldWalls[4]:setFillColor(1, 0,0,0)
+			world.WorldWalls[4].anchorY = 5
 			world.WorldWalls[4].x =x -167;
-                        world.WorldWalls[4].y = display.contentHeight-98
+            world.WorldWalls[4].y = display.contentHeight-98
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
                         
-                        --Bed Wall
-                        world.WorldWalls[5] = display.newRect(0 ,0,10,73)
-			world.WorldWalls[5]:setFillColor(255, 0,0,0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+            --Bed Wall
+            world.WorldWalls[5] = display.newRect(0 ,0,10,73)
+			world.WorldWalls[5]:setFillColor(1, 0,0,0)
+			world.WorldWalls[5].anchorY = 73
 			world.WorldWalls[5].x =x -277;
-                        world.WorldWalls[5].y = display.contentHeight-102
+            world.WorldWalls[5].y = display.contentHeight-102
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
-                        --Shelfs
-                        world.WorldWalls[6] = display.newRect(0 ,0,132,5)
-			world.WorldWalls[6]:setFillColor(90,31, 11, 255)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+
+            --Shelfs
+            world.WorldWalls[6] = display.newRect(0 ,0,132,5)
+			world.WorldWalls[6]:setFillColor(90/255,31/255, 11/255, 1)
+			world.WorldWalls[6].anchorY = 5
 			world.WorldWalls[6].x =x+291;
-                        world.WorldWalls[6].y = display.contentHeight-278
+            world.WorldWalls[6].y = display.contentHeight-278
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
                         
-                        world.WorldWalls[7] = display.newRect(0 ,0,132,5)
-			world.WorldWalls[7]:setFillColor(90,31, 11, 255)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[7] = display.newRect(0 ,0,132,5)
+			world.WorldWalls[7]:setFillColor(90/255,31/255, 11/255, 1)
+			world.WorldWalls[7].anchorY = 5
 			world.WorldWalls[7].x =x+291;
-                        world.WorldWalls[7].y = display.contentHeight-225
+            world.WorldWalls[7].y = display.contentHeight-225
 			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
                         
-                        world.WorldWalls[8] = display.newRect(0 ,0,132,5)
-			world.WorldWalls[8]:setFillColor(90,31, 11, 255)
-			world.WorldWalls[8]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[8] = display.newRect(0 ,0,132,5)
+			world.WorldWalls[8]:setFillColor(90/255,31/255, 11/255, 1)
+			world.WorldWalls[8].anchorY = 5
 			world.WorldWalls[8].x =x+291;
-                        world.WorldWalls[8].y = display.contentHeight-165
+            world.WorldWalls[8].y = display.contentHeight-165
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=0
                         
-                        world.WorldWalls[9] = display.newRect(0 ,0,132,5)
-			world.WorldWalls[9]:setFillColor(90,31, 11, 255)
-			world.WorldWalls[9]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[9] = display.newRect(0 ,0,132,5)
+			world.WorldWalls[9]:setFillColor(90/255,31/255, 11/255, 1)
+			world.WorldWalls[9].anchorY = 5
 			world.WorldWalls[9].x =x+291;
-                        world.WorldWalls[9].y = display.contentHeight-110
+            world.WorldWalls[9].y = display.contentHeight-110
 			world.WorldWalls[9].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[9].rotation=0
                         
-                        world.WorldWalls[10] = display.newRect(0 ,0,8,170)
-			world.WorldWalls[10]:setFillColor(0, 255,0,0)
-			world.WorldWalls[10]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[10] = display.newRect(0 ,0,8,170)
+			world.WorldWalls[10]:setFillColor(0,1,0,0)
+			world.WorldWalls[10].anchorY = 70
 			world.WorldWalls[10].x =x+229;
-                        world.WorldWalls[10].y = display.contentHeight-110
+            world.WorldWalls[10].y = display.contentHeight-110
 			world.WorldWalls[10].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[10].rotation=0
                         
-                        --bottom
-                        world.WorldWalls[11] = display.newRect(0 ,0,1000,70)
-			--world.WorldWalls[11]:setFillColor(0, 0,255,255)
-                        world.WorldWalls[11]:setFillColor(0, 255,0, 155)
-			world.WorldWalls[11]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[11].x =x ;  world.WorldWalls[11].y = display.contentHeight-350
-			world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[11].rotation=0
-         
-         
-         
-         
-
+    --bottom
+    world.WorldWalls[11] = display.newRect(0 ,0,1000,70)
+    world.WorldWalls[11]:setFillColor(0, 1, 0, 155/255)
+	world.WorldWalls[11].anchorY = 70
+	world.WorldWalls[11].x =x ;  world.WorldWalls[11].y = display.contentHeight-350
+	world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[11].rotation=0
 end
 
 local function CreateLevel_4() -- iPad compatible
     ShowAds=false
-        world.ScreenMinX=-450
+    world.ScreenMinX=-450
 	world.ScreenMaxX=450
-        local x=display.contentWidth*0.5
+    local x=display.contentWidth*0.5
                         
 	world.BGSprites[1]={image="src/images/levels/level_4_bg0.png"}
 	world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -483,145 +455,113 @@ local function CreateLevel_4() -- iPad compatible
 	world.BGSprites[1].dx = 1
 	world.BGSprites[1].layer=0
                         
-        --bottom
-        world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 0)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+55
-			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[1].rotation=0
-
+    --bottom
+    world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
+	world.WorldWalls[1]:setFillColor(127, 106,79, 0)
+	world.WorldWalls[1].anchorY = 70
+	world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+55
+	world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[1].rotation=0
+                    
+    --right wall 
+    world.WorldWalls[2] = display.newRect(0,0,500,392)
+	world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+	world.WorldWalls[2].anchorY = 392
+	world.WorldWalls[2].x =x+463
+    world.WorldWalls[2].y = display.contentHeight
+	world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[2].rotation=0
+	
+    --left wall
+    world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+	world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+	world.WorldWalls[3].anchorY = 392
+	world.WorldWalls[3].x =x-465
+    world.WorldWalls[3].y = display.contentHeight
+	world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[3].rotation=0
                         
-                        --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[2].x =x+463
-                        world.WorldWalls[2].y = display.contentHeight
-			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[3].x =x-465
-                        world.WorldWalls[3].y = display.contentHeight
-			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[3].rotation=0
-                        
-                                              
-                        --top
-                        world.WorldWalls[4] = display.newRect(0 ,0,1000,70)
-                        world.WorldWalls[4]:setFillColor(0, 255,0, 155)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
-			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[4].rotation=0
-                        
-                        
-                        --mouse stage
-                        world.WorldWalls[5] = display.newRect(0 ,0,55,20)
-			world.WorldWalls[5]:setFillColor(0, 255,0,0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+    --top
+    world.WorldWalls[4] = display.newRect(0 ,0,1000,70)
+    world.WorldWalls[4]:setFillColor(0, 1, 0, 155/255)
+	world.WorldWalls[4].anchorY = 70
+	world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
+	world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[4].rotation=0
+    
+            --mouse stage
+            world.WorldWalls[5] = display.newRect(0 ,0,55,20)
+			world.WorldWalls[5]:setFillColor(0, 1,0,0)
+			world.WorldWalls[5].anchorY = 20
 			world.WorldWalls[5].x =x+120;
-                        world.WorldWalls[5].y = display.contentHeight-135
-                        world.WorldWalls[5].myName="CloseWall"
+            world.WorldWalls[5].y = display.contentHeight-135
+            world.WorldWalls[5].myName="CloseWall"
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
                         
-                        --mouse stage wall
-                        world.WorldWalls[6] = display.newRect(0 ,0,5,60)
-			world.WorldWalls[6]:setFillColor(0, 255,0,0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+            --mouse stage wall
+            world.WorldWalls[6] = display.newRect(0 ,0,5,60)
+			world.WorldWalls[6]:setFillColor(0, 1,0,0)
+			world.WorldWalls[6].anchorY = 60
 			world.WorldWalls[6].x =x+149;
-                        world.WorldWalls[6].y = display.contentHeight-95
-                        world.WorldWalls[6].myName="CloseWall"
+            world.WorldWalls[6].y = display.contentHeight-95
+            world.WorldWalls[6].myName="CloseWall"
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
 
-                        
-                        --shelfs
-                        --world.WorldWalls[7] = display.newRect(0 ,0,176,5)
-			--world.WorldWalls[7]:setFillColor(0, 255,0,255)
-			--world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
-			--world.WorldWalls[7].x =x-118;
-                        --world.WorldWalls[7].y = display.contentHeight-108
-			--world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
-			--world.WorldWalls[7].rotation=0
-                        
-                        --world.WorldWalls[7] = display.newRect(0 ,0,176,5)
-			--world.WorldWalls[7]:setFillColor(90,31, 11, 255)
-			--world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
-			--world.WorldWalls[7].x =x-118;
-                        --world.WorldWalls[7].y = display.contentHeight-262
-			--world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
-			--world.WorldWalls[7].rotation=0
-                        --small shelfs
-                        
-                        world.WorldWalls[7] = display.newRect(0 ,0,55,5)
-			world.WorldWalls[7]:setFillColor(90,31, 11, 0)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[7] = display.newRect(0 ,0,55,5)
+			world.WorldWalls[7]:setFillColor(90/255,31/255, 11/255, 0)
+			world.WorldWalls[7].anchorY = 5
 			world.WorldWalls[7].x =x-178;
-                        world.WorldWalls[7].y = display.contentHeight-108
-                        world.WorldWalls[7].myName="CloseWall"
+            world.WorldWalls[7].y = display.contentHeight-108
+            world.WorldWalls[7].myName="CloseWall"
 			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
                         
-                        world.WorldWalls[8] = display.newRect(0 ,0,55,5)
-			world.WorldWalls[8]:setFillColor(90,31, 11, 0)
-			world.WorldWalls[8]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[8] = display.newRect(0 ,0,55,5)
+			world.WorldWalls[8]:setFillColor(90/255,31/255, 11/255, 0)
+			world.WorldWalls[8].anchorY = 5
 			world.WorldWalls[8].x =x-178;
-                        world.WorldWalls[8].y = display.contentHeight-149
-                        world.WorldWalls[8].myName="CloseWall"
+            world.WorldWalls[8].y = display.contentHeight-149
+            world.WorldWalls[8].myName="CloseWall"
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=0
                         
-                        world.WorldWalls[9] = display.newRect(0 ,0,55,5)
-			world.WorldWalls[9]:setFillColor(90,31, 11, 0)
-			world.WorldWalls[9]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[9] = display.newRect(0 ,0,55,5)
+			world.WorldWalls[9]:setFillColor(90/255,31/255, 11/255, 0)
+			world.WorldWalls[9].anchorY = 5
 			world.WorldWalls[9].x =x-178;
-                        world.WorldWalls[9].y = display.contentHeight-188
-                        world.WorldWalls[9].myName="CloseWall"
+            world.WorldWalls[9].y = display.contentHeight-188
+            world.WorldWalls[9].myName="CloseWall"
 			world.WorldWalls[9].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[9].rotation=0
                         
-                        world.WorldWalls[10] = display.newRect(0 ,0,55,5)
-			world.WorldWalls[10]:setFillColor(90,31, 11, 0)
-			world.WorldWalls[10]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[10] = display.newRect(0 ,0,55,5)
+			world.WorldWalls[10]:setFillColor(90/255,31/255, 11/255, 0)
+			world.WorldWalls[10].anchorY = 5
 			world.WorldWalls[10].x =x-178;
-                        world.WorldWalls[10].y = display.contentHeight-227
-                        world.WorldWalls[10].myName="CloseWall"
+            world.WorldWalls[10].y = display.contentHeight-227
+            world.WorldWalls[10].myName="CloseWall"
 			world.WorldWalls[10].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[10].rotation=0
                         
-                        
-                                                
-                        --mouse stage small left wall
-                        --world.WorldWalls[11] = display.newRect(0 ,0,30,5)
-			--world.WorldWalls[11]:setFillColor(0, 255,0,0)
-			--world.WorldWalls[11]:setReferencePoint( display.BottomCenterReferencePoint )
-			--world.WorldWalls[11].x =x+85;
-                        --world.WorldWalls[11].y = display.contentHeight-113
-			--world.WorldWalls[11].physics={ friction=0.5, bounce=0.3 } 
-			--world.WorldWalls[11].rotation=0
-                        
-                        --bottom brown
-                        world.WorldWalls[12] = display.newRect(0 ,0,1000,76)
-			world.WorldWalls[12]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[12]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom brown
+            world.WorldWalls[12] = display.newRect(0 ,0,1000,76)
+			world.WorldWalls[12]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[12].anchorY = 76
 			world.WorldWalls[12].x =x ;  world.WorldWalls[12].y = display.contentHeight+65
 			world.WorldWalls[12].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[12].rotation=0
-                        
 end
 
 local function CreateLevel_5() -- iPad compatible
-    ShowAds=false
-        world.ScreenMinX=-450
-			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+    
+	ShowAds=false
+    world.ScreenMinX=-450
+	world.ScreenMaxX=450
+    local x=display.contentWidth*0.5
                         
-			world.BGSprites[1]={image="src/images/levels/level_5_bg0.png"}
+	world.BGSprites[1]={image="src/images/levels/level_5_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
 			world.BGSprites[1].ReferencePoint= display.BottomCenterReferencePoint 
 			world.BGSprites[1].x = display.contentWidth*0.5; world.BGSprites[1].y = display.contentHeight
@@ -645,85 +585,84 @@ local function CreateLevel_5() -- iPad compatible
 			world.BGSprites[3].width=78;world.BGSprites[3].height=56
 			world.BGSprites[3].dx = 1
 			world.BGSprites[3].layer=1                        
-                         --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 0)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+            
+			--bottom
+			world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 0)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+57
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
-   --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+   
+			--right wall 
+            world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+242
-                        world.WorldWalls[2].y = display.contentHeight
+            world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-242
-                        world.WorldWalls[3].y = display.contentHeight
+
+            --left wall
+            world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
+			world.WorldWalls[3].x = x -world.BGSprites[1].width*0.5-242
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
-                        
-                                              
-                        --top
-                        world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+
+            --top
+            world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+            world.WorldWalls[4]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[4].anchorY = 70
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
                         
-                        
-                        --table
-                        world.WorldWalls[5] = display.newRect(0 ,0,135,5)
-			world.WorldWalls[5]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[5].x =x-13;
-                        world.WorldWalls[5].y = display.contentHeight-138
-                        world.WorldWalls[5].myName="CloseWall"
+            --table
+            world.WorldWalls[5] = display.newRect(0 ,0,135,5)
+			world.WorldWalls[5]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[5].anchorY = 5
+			world.WorldWalls[5].x = x-13;
+            world.WorldWalls[5].y = display.contentHeight-138
+            world.WorldWalls[5].myName="CloseWall"
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
                         
-                        --sofa floor
-                        world.WorldWalls[6] = display.newRect(0 ,0,20,3)
-			world.WorldWalls[6]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+            --sofa floor
+            world.WorldWalls[6] = display.newRect(0 ,0,20,3)
+			world.WorldWalls[6]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[6].anchorY = 3
 			world.WorldWalls[6].x =x-250;
-                        world.WorldWalls[6].y = display.contentHeight-35
-                        world.WorldWalls[6].myName="CloseWall"
+            world.WorldWalls[6].y = display.contentHeight-35
+            world.WorldWalls[6].myName="CloseWall"
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
                         
-                        world.WorldWalls[7] = display.newRect(0 ,0,20,3)
-			world.WorldWalls[7]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[7] = display.newRect(0 ,0,20,3)
+			world.WorldWalls[7]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[7].anchorY = 3
 			world.WorldWalls[7].x =x-210;
-                        world.WorldWalls[7].myName="CloseWall"
-                        world.WorldWalls[7].y = display.contentHeight-39
+            world.WorldWalls[7].myName="CloseWall"
+            world.WorldWalls[7].y = display.contentHeight-39
 			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
  
-                        
-                        --bottom wall 
-                        world.WorldWalls[12] = display.newRect(0 ,0,3000,100)
-                        world.WorldWalls[12]:setFillColor(127, 106,79, 255)
-                        world.WorldWalls[12]:setReferencePoint( display.TopCenterReferencePoint )
-                        world.WorldWalls[12].x =-500
-                        world.WorldWalls[12].y = display.contentHeight
-        
-                        
+            --bottom wall 
+            world.WorldWalls[12] = display.newRect(0 ,0,3000,100)
+            world.WorldWalls[12]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[12].anchorY = 0
+            world.WorldWalls[12].x =-500
+            world.WorldWalls[12].y = display.contentHeight
 end
 
 local function CreateLevel_6() -- iPad compatible
-    ShowAds=false
-          world.ScreenMinX=-450
-			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+    
+	ShowAds=false
+    world.ScreenMinX=-450
+	world.ScreenMaxX=450
+    local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_6_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -733,160 +672,156 @@ local function CreateLevel_6() -- iPad compatible
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
                         
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 255)--(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,1000,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 1)--(127, 106,79, 200)
+			world.WorldWalls[1].anchorY = 70
+			world.WorldWalls[1].x = x;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
-   --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+242
-                        world.WorldWalls[2].y = display.contentHeight
+   
+			--right wall 
+			world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
+			world.WorldWalls[2].x = x + world.BGSprites[1].width*0.5+242
+            world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+            
+            --left wall
+            world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-242
-                        world.WorldWalls[3].y = display.contentHeight
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
                         
-                                              
-                        --top
-                        world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 0, 255, 200)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+            --top
+            world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+            world.WorldWalls[4]:setFillColor(0, 0, 1, 200/255)
+			world.WorldWalls[4].anchorY = 70
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
                         
                         
-                        --mouse stage
-                        world.WorldWalls[5] = display.newRect(0 ,0,70,5)
-			world.WorldWalls[5]:setFillColor(0, 0, 255, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+            --mouse stage
+            world.WorldWalls[5] = display.newRect(0 ,0,70,5)
+			world.WorldWalls[5]:setFillColor(0, 0, 1, 0)
+			world.WorldWalls[5].anchorY = 5
 			world.WorldWalls[5].x =x+220;
-                        world.WorldWalls[5].y = display.contentHeight-95
+            world.WorldWalls[5].y = display.contentHeight-95
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
                     
-                    
-                         -- shelfs
-                        world.WorldWalls[6] = display.newRect(0 ,0,115,3)
-			world.WorldWalls[6]:setFillColor(0, 0, 255, 0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[6].x =x-153;
-                        world.WorldWalls[6].y = display.contentHeight-210
-                        world.WorldWalls[6].myName="CloseWall"
+            -- shelfs
+            world.WorldWalls[6] = display.newRect(0 ,0,115,3)
+			world.WorldWalls[6]:setFillColor(0, 0, 1, 0)
+			world.WorldWalls[6].anchorY = 3
+			world.WorldWalls[6].x = x-153;
+            world.WorldWalls[6].y = display.contentHeight-210
+            world.WorldWalls[6].myName="CloseWall"
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
                         
-                                                 -- shelfs
-                        world.WorldWalls[7] = display.newRect(0 ,0,115,3)
-			world.WorldWalls[7]:setFillColor(0, 0, 255, 0)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[7].x =x-153;
-                        world.WorldWalls[7].y = display.contentHeight-173
-                        world.WorldWalls[7].myName="CloseWall"
+            -- shelfs
+            world.WorldWalls[7] = display.newRect(0 ,0,115,3)
+			world.WorldWalls[7]:setFillColor(0, 0, 1, 0)
+			world.WorldWalls[7].anchorY = 3
+			world.WorldWalls[7].x = x - 153;
+            world.WorldWalls[7].y = display.contentHeight-173
+            world.WorldWalls[7].myName="CloseWall"
 			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
                         
-                        --mouse stage
-                        world.WorldWalls[8] = display.newRect(0 ,0,5,40)
-			world.WorldWalls[8]:setFillColor(0, 0, 255, 0)
-			world.WorldWalls[8]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[8].x =x+260;
-                        world.WorldWalls[8].y = display.contentHeight-95
+            --mouse stage
+            world.WorldWalls[8] = display.newRect(0 ,0,5,40)
+			world.WorldWalls[8]:setFillColor(0, 0, 1, 0)
+			world.WorldWalls[8].anchorY = 40
+			world.WorldWalls[8].x = x + 260;
+            world.WorldWalls[8].y = display.contentHeight-95
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=0
-                           
 end
 
 local function CreateLevel_7() -- iPad compatible
     ShowAds=false
           world.ScreenMinX=-5000
 			world.ScreenMaxX=5000
-                        local x=display.contentWidth*0.5
+            local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_7_bg0.png"}
-			
 			world.BGSprites[1].ReferencePoint= display.BottomLeftReferencePoint 
-			world.BGSprites[1].x =x-- 0--display.contentWidth*0.5;
-                        world.BGSprites[1].y = display.contentHeight
+			world.BGSprites[1].x = x-- 0--display.contentWidth*0.5;
+            world.BGSprites[1].y = display.contentHeight
 			world.BGSprites[1].width=1396;
-                        world.BGSprites[1].height=390
+            world.BGSprites[1].height=390
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
 
                         
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x+world.BGSprites[1].width*0.5 ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
 
                         
-                        --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+            --right wall 
+            world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
 			world.WorldWalls[2].x =world.BGSprites[1].x+world.BGSprites[1].width+250  --x+(461+170+414)-250
-                        world.WorldWalls[2].y = display.contentHeight
+            world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[3].x =x-247
-                        world.WorldWalls[3].y = display.contentHeight
+            
+            --left wall
+			world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
+			world.WorldWalls[3].x = x - 247
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
                         
-                        --table
-                        world.WorldWalls[4] = display.newRect(0 ,0,260,10)
-			world.WorldWalls[4]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+            --table
+            world.WorldWalls[4] = display.newRect(0 ,0,260,10)
+			world.WorldWalls[4]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[4].anchorY = 10
 			world.WorldWalls[4].x =x+720;
-                        world.WorldWalls[4].y = display.contentHeight-129
-                        world.WorldWalls[4].myName="CloseWall"
+            world.WorldWalls[4].y = display.contentHeight-129
+            world.WorldWalls[4].myName="CloseWall"
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
                     
-                        --bottom transparent
-                        world.WorldWalls[5] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[5]:setFillColor(0, 0,255, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom transparent
+            world.WorldWalls[5] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[5]:setFillColor(0,0,1,0)
+			world.WorldWalls[5].anchorY = 70
 			world.WorldWalls[5].x =x+world.BGSprites[1].width*0.5 ;  world.WorldWalls[5].y = display.contentHeight+53
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
-                        
-                        
 
-                        --bottom
-                        world.WorldWalls[6] = display.newRect(0 ,0,3000,100)
-			--world.WorldWalls[6]:setFillColor(0, 0,255,255)
-                        world.WorldWalls[6]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[6]:setReferencePoint( display.TopCenterReferencePoint )
+            --bottom
+            world.WorldWalls[6] = display.newRect(0 ,0,3000,100)
+            world.WorldWalls[6]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[6].anchorY = 0
 			world.WorldWalls[6].x =x ;  world.WorldWalls[6].y = display.contentHeight
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
-
 end
 
 local function CreateLevel_8() -- iPad compatible
-       ShowAds=false
-        world.ScreenMinX=-450
+
+    ShowAds=false
+    world.ScreenMinX=-450
 	world.ScreenMaxX=450
-        local x=display.contentWidth*0.5
+    local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_8_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -896,95 +831,92 @@ local function CreateLevel_8() -- iPad compatible
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
                         
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
 
                         
-                        --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+            --right wall 
+            world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
+			
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+250
                         world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+            
+            --left wall
+			world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-250
-                        world.WorldWalls[3].y = display.contentHeight
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
-                        
-                                              
-                        --top
-                        world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
+
+            --top
+            world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+            world.WorldWalls[4]:setFillColor(0, 1, 0, 200/255)
+			world.WorldWalls[4].anchorY = 70
+			world.WorldWalls[4].x = x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
-                        
-                        
-                        --mouse stage 1
-                        world.WorldWalls[5] = display.newRect(0 ,0,215,8)
-			world.WorldWalls[5]:setFillColor(255, 0, 0, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+
+            --mouse stage 1
+            world.WorldWalls[5] = display.newRect(0 ,0,215,8)
+			world.WorldWalls[5]:setFillColor(1, 0, 0, 0)
+			world.WorldWalls[5].anchorY = 8
 			world.WorldWalls[5].x =x-121;
-                        world.WorldWalls[5].y = display.contentHeight-162
+            world.WorldWalls[5].y = display.contentHeight-162
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
                         
-                        --mouse stage 2
-                        world.WorldWalls[6] = display.newRect(0 ,0,92,10)
-			world.WorldWalls[6]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+            --mouse stage 2
+            world.WorldWalls[6] = display.newRect(0 ,0,92,10)
+			world.WorldWalls[6]:setFillColor(0, 1, 0, 0)
+			world.WorldWalls[6].anchorY = 10
 			world.WorldWalls[6].x =x+87;
-                        world.WorldWalls[6].y = display.contentHeight-134
-                        world.WorldWalls[6].myName="CloseWall"
+            world.WorldWalls[6].y = display.contentHeight-134
+            world.WorldWalls[6].myName="CloseWall"
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=0
                         
-                        --user stage 1 -washing machine
-                        world.WorldWalls[7] = display.newRect(0 ,0,110,50)
-			world.WorldWalls[7]:setFillColor(0, 0, 255, 0)
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+            --user stage 1 -washing machine
+            world.WorldWalls[7] = display.newRect(0 ,0,110,50)
+			world.WorldWalls[7]:setFillColor(0, 0, 1, 0)
+			world.WorldWalls[7].anchorY = 50
 			world.WorldWalls[7].x =x+194;
-                        world.WorldWalls[7].y = display.contentHeight-122
-                        world.WorldWalls[7].myName="CloseWall"
-                        world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
+            world.WorldWalls[7].y = display.contentHeight-122
+            world.WorldWalls[7].myName="CloseWall"
+            world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[7].rotation=0
                         
-                         --bottom invisible
-                        world.WorldWalls[8] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[8]:setFillColor(255, 0, 0, 0)--(127, 106,79, 200)
-			world.WorldWalls[8]:setReferencePoint( display.BottomCenterReferencePoint )
+            --bottom invisible
+            world.WorldWalls[8] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[8]:setFillColor(1, 0, 0, 0)--(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[8].anchorY = 70
 			world.WorldWalls[8].x =x ;  world.WorldWalls[8].y = display.contentHeight+55
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=0
                         
-                       --Iron
-                        world.WorldWalls[9] = display.newRect(0 ,0,25,40)
-			world.WorldWalls[9]:setFillColor(255, 0, 0, 0)
-			world.WorldWalls[9]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[9].x =x-205;
-                        world.WorldWalls[9].y = display.contentHeight-167
+            --Iron
+            world.WorldWalls[9] = display.newRect(0 ,0,25,40)
+			world.WorldWalls[9]:setFillColor(1, 0, 0, 0)
+			world.WorldWalls[9].anchorY = 40
+			world.WorldWalls[9].x = x -205;
+            world.WorldWalls[9].y = display.contentHeight-167
 			world.WorldWalls[9].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[9].rotation=0
                     
-                            
-                            
-                       --bottom
-                        world.WorldWalls[10] = display.newRect(0 ,0,1000,100)
-			--world.WorldWalls[10]:setFillColor(0, 0,255,255)
-                        world.WorldWalls[10]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[10]:setReferencePoint( display.TopCenterReferencePoint )
+			--bottom
+            world.WorldWalls[10] = display.newRect(0 ,0,1000,100)
+            world.WorldWalls[10]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[10].anchorY = 0
 			world.WorldWalls[10].x =x ;  world.WorldWalls[10].y = display.contentHeight
 			world.WorldWalls[10].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[10].rotation=0
@@ -994,7 +926,7 @@ local function CreateLevel_9() -- iPad compatible
     ShowAds=false
          world.ScreenMinX=-450
 			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+            local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_9_bg0.png"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
@@ -1003,89 +935,86 @@ local function CreateLevel_9() -- iPad compatible
 			world.BGSprites[1].width=686;world.BGSprites[1].height=410
 			world.BGSprites[1].dx = 1
 			world.BGSprites[1].layer=0
-                        
-                        --bottom
-                        world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+
+            --bottom
+            world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+			world.WorldWalls[1]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
 
-                        
-                        --right wall 
-                        world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+            --right wall 
+            world.WorldWalls[2] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[2]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+242
-                        world.WorldWalls[2].y = display.contentHeight
+            world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
-                        --left wall
-                        world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+                        
+			--left wall
+            world.WorldWalls[3] = display.newRect(0 ,0,500,392)
+			world.WorldWalls[3]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-242
-                        world.WorldWalls[3].y = display.contentHeight
+            world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[3].rotation=0
-                        
-                                              
-                        --top
-                        world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 255)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+            
+            --top
+            world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
+            world.WorldWalls[4]:setFillColor(0,1,0,1)
+			world.WorldWalls[4].anchorY = 70
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
-                        
-                        
-                        --mouse stage
-                        world.WorldWalls[5] = display.newRect(0 ,0,290,20)
-			world.WorldWalls[5]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+
+            --mouse stage
+            world.WorldWalls[5] = display.newRect(0 ,0,290,20)
+			world.WorldWalls[5]:setFillColor(0,1,0,0)
+			world.WorldWalls[5].anchorY = 20
 			world.WorldWalls[5].x =x-90;
-                        world.WorldWalls[5].y = display.contentHeight-207
+            world.WorldWalls[5].y = display.contentHeight-207
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[5].rotation=0
-                        world.WorldWalls[5].myName="CloseWall"
+            world.WorldWalls[5].myName="CloseWall"
                        
-                        world.WorldWalls[6] = display.newRect(0 ,0,100,20)
-			world.WorldWalls[6]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[6]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[6] = display.newRect(0 ,0,100,20)
+			world.WorldWalls[6]:setFillColor(0,1,0,0)
+			world.WorldWalls[6].anchorY = 20
 			world.WorldWalls[6].x =x+83;
-                        world.WorldWalls[6].y = display.contentHeight-173
+            world.WorldWalls[6].y = display.contentHeight-173
 			world.WorldWalls[6].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[6].rotation=40
-                        world.WorldWalls[6].myName="CloseWall"
-                        --[[ --]]
-                        world.WorldWalls[7] = display.newRect(0 ,0,50,100)
-			world.WorldWalls[7]:setFillColor(0, 255, 0, 0)
-                        world.WorldWalls[7].rotation=20
-                        world.WorldWalls[7].myName="CloseWall"
-			world.WorldWalls[7]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[6].myName="CloseWall"
+            
+			world.WorldWalls[7] = display.newRect(0 ,0,50,100)
+			world.WorldWalls[7]:setFillColor(0,1,0,0)
+            world.WorldWalls[7].rotation=20
+            world.WorldWalls[7].myName="CloseWall"
+			world.WorldWalls[7].anchorY = 100
 			world.WorldWalls[7].x =x-240;
-                        world.WorldWalls[7].y = display.contentHeight-110
-                        
-			world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
+            world.WorldWalls[7].y = display.contentHeight-110
+            world.WorldWalls[7].physics={ friction=0.5, bounce=0.3 } 
 			
                        
                         
-                        world.WorldWalls[8] = display.newRect(0 ,0,140,20)
-			world.WorldWalls[8]:setFillColor(0, 255, 0, 0)
-			world.WorldWalls[8]:setReferencePoint( display.BottomCenterReferencePoint )
+            world.WorldWalls[8] = display.newRect(0 ,0,140,20)
+			world.WorldWalls[8]:setFillColor(0,1,0,0)
+			world.WorldWalls[8].anchorY = 20
+			
 			world.WorldWalls[8].x =x+180;
-                        world.WorldWalls[8].y = display.contentHeight-145
+            world.WorldWalls[8].y = display.contentHeight-145
 			world.WorldWalls[8].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[8].rotation=4
-                        world.WorldWalls[8].myName="CloseWall"
+            world.WorldWalls[8].myName="CloseWall"
                        
                        
-                        --bottom
-                        world.WorldWalls[9] = display.newRect(0 ,0,1000,100)
-			--world.WorldWalls[9]:setFillColor(0, 0,255,255)
-                        world.WorldWalls[9]:setFillColor(127, 106,79, 255)
-			world.WorldWalls[9]:setReferencePoint( display.TopCenterReferencePoint )
+            --bottom
+            world.WorldWalls[9] = display.newRect(0 ,0,1000,100)
+			world.WorldWalls[9]:setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[9].anchorY = 0			
 			world.WorldWalls[9].x =x ;  world.WorldWalls[9].y = display.contentHeight
 			world.WorldWalls[9].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[9].rotation=0
@@ -1107,8 +1036,9 @@ local function CreateLevel_10()
                         
                         --bottom
                         world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(0, 255, 0, 200)--(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[1]:setFillColor(0, 1, 0, 200/255)--(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[1].anchorY = 70
+			
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
@@ -1116,16 +1046,19 @@ local function CreateLevel_10()
                         
                         --right wall 
                         world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[2]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
+			
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+236
                         world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
+			
                         --left wall
                         world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[3]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
+			
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-236
                         world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
@@ -1134,8 +1067,9 @@ local function CreateLevel_10()
                                               
                         --top
                         world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+                        world.WorldWalls[4]:setFillColor(0, 1, 0, 200/255)
+			
+			world.WorldWalls[4].anchorY = 70
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
@@ -1143,8 +1077,9 @@ local function CreateLevel_10()
                         
                         --mouse stage
                         world.WorldWalls[5] = display.newRect(0 ,0,155,20)
-			world.WorldWalls[5]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[5]:setFillColor(0, 1, 0, 200/255)
+			
+			world.WorldWalls[5].anchorY = 20
 			world.WorldWalls[5].x =x+100;
                         world.WorldWalls[5].y = display.contentHeight-135
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
@@ -1168,8 +1103,8 @@ local function CreateLevel_11()
                         
                         --bottom
                         world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(0, 255, 0, 200)--(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[1]:setFillColor(0, 1, 0, 200/255)--(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[1].anchorY = 70
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
@@ -1177,16 +1112,19 @@ local function CreateLevel_11()
                         
                         --right wall 
                         world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[2]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
+			
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+242
                         world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
                         --left wall
                         world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[3]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			
+			world.WorldWalls[3].anchorY = 392
+			
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-242
                         world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
@@ -1195,8 +1133,10 @@ local function CreateLevel_11()
                                               
                         --top
                         world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+                        world.WorldWalls[4]:setFillColor(0, 1, 0, 200/255)
+						
+			world.WorldWalls[4].anchorY = 70
+						
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
@@ -1204,8 +1144,9 @@ local function CreateLevel_11()
                         
                         --mouse stage
                         world.WorldWalls[5] = display.newRect(0 ,0,155,20)
-			world.WorldWalls[5]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[5]:setFillColor(0, 1, 0, 200/255)
+			world.WorldWalls[5].anchorY = 20
+			
 			world.WorldWalls[5].x =x+120;
                         world.WorldWalls[5].y = display.contentHeight-135
 			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
@@ -1218,10 +1159,11 @@ local function CreateLevel_12()
     ShowAds=false
            world.ScreenMinX=-450
 			world.ScreenMaxX=450
-                        local x=display.contentWidth*0.5
+            local x=display.contentWidth*0.5
                         
 			world.BGSprites[1]={image="src/images/levels/level_12_bg0.jpg"}
 			world.BGSprites[1].xScale = 1; world.BGSprites[1].yScale = 1
+						
 			world.BGSprites[1].ReferencePoint= display.BottomCenterReferencePoint 
 			world.BGSprites[1].x = x; world.BGSprites[1].y = display.contentHeight
 			world.BGSprites[1].width=392;world.BGSprites[1].height=376
@@ -1230,8 +1172,9 @@ local function CreateLevel_12()
                         
                         --bottom
                         world.WorldWalls[1] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-			world.WorldWalls[1]:setFillColor(0, 255, 0, 200)--(127, 106,79, 200)
-			world.WorldWalls[1]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[1]:setFillColor(0, 1, 0, 200/255)--(127/255, 106/255,79/255, 200/255)
+			world.WorldWalls[5].anchorY = 70
+			
 			world.WorldWalls[1].x =x ;  world.WorldWalls[1].y = display.contentHeight+60
 			world.WorldWalls[1].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[1].rotation=0
@@ -1239,16 +1182,18 @@ local function CreateLevel_12()
                         
                         --right wall 
                         world.WorldWalls[2] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[2]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[2]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[2]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[2].anchorY = 392
+			
 			world.WorldWalls[2].x =x+world.BGSprites[1].width*0.5+242
                         world.WorldWalls[2].y = display.contentHeight
 			world.WorldWalls[2].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[2].rotation=0
                         --left wall
                         world.WorldWalls[3] = display.newRect(0 ,0,500,392)
-			world.WorldWalls[3]:setFillColor(0, 255, 0, 200)--setFillColor(127, 106,79, 255)
-			world.WorldWalls[3]:setReferencePoint( display.BottomCenterReferencePoint )
+			world.WorldWalls[3]:setFillColor(0, 1, 0, 200/255)--setFillColor(127/255, 106/255,79/255, 1)
+			world.WorldWalls[3].anchorY = 392
+			
 			world.WorldWalls[3].x =x-world.BGSprites[1].width*0.5-242
                         world.WorldWalls[3].y = display.contentHeight
 			world.WorldWalls[3].physics={ friction=0.5, bounce=0.3 } 
@@ -1257,23 +1202,21 @@ local function CreateLevel_12()
                                               
                         --top
                         world.WorldWalls[4] = display.newRect(0 ,0,world.BGSprites[1].width+100,70)
-                        world.WorldWalls[4]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[4]:setReferencePoint( display.BottomCenterReferencePoint )
+                        world.WorldWalls[4]:setFillColor(0, 1, 0, 200/255)
+	world.WorldWalls[4].anchorY = 70
+
 			world.WorldWalls[4].x =x ;  world.WorldWalls[4].y = display.contentHeight-350
 			world.WorldWalls[4].physics={ friction=0.5, bounce=0.3 } 
 			world.WorldWalls[4].rotation=0
                         
-                        
-                        --mouse stage
-                        world.WorldWalls[5] = display.newRect(0 ,0,55,20)
-			world.WorldWalls[5]:setFillColor(0, 255, 0, 200)
-			world.WorldWalls[5]:setReferencePoint( display.BottomCenterReferencePoint )
-			world.WorldWalls[5].x =x+120;
-                        world.WorldWalls[5].y = display.contentHeight-135
-			world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
-			world.WorldWalls[5].rotation=0
-                    
-                          
+    --mouse stage
+    world.WorldWalls[5] = display.newRect(0 ,0,55,20)
+	world.WorldWalls[5]:setFillColor(0, 1, 0, 200/255)
+	world.WorldWalls[5].anchorY = 20
+	world.WorldWalls[5].x =x+120;
+    world.WorldWalls[5].y = display.contentHeight-135
+	world.WorldWalls[5].physics={ friction=0.5, bounce=0.3 } 
+	world.WorldWalls[5].rotation=0
 end
 
 

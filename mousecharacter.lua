@@ -131,7 +131,6 @@ end
 
 
 local function UpdateEyes()
-  
 
     if Front then
 
@@ -146,67 +145,48 @@ local function UpdateEyes()
 
         EyesFront.isVisible=false
         EyesSide:stopAtFrame(EyesState)
-        EyesSide.y=head.y+7
+        EyesSide.y=head.y+7-5
         EyesSide.x=head.x+5*head.xScale
         EyesSide.xScale=head.xScale
         EyesSide.rotation=0--head.rotation
         EyesSide.isVisible=true
     end
-    
-
 end
-
 
 local function createCharacterJoints(startX,startY,side,createNeckJoint)
 
 	characterJoints_Wheel = physics.newJoint ( "pivot",  torso, wheel, startX,startY+character_Yoffsets.wheel)
 	characterJoints_Wheel.isLimitEnabled =false
-	
-        characterJoints_Torso = physics.newJoint ( "pivot", torso, neck, startX, startY+15)--character_Yoffsets.torso-torso.height*0.5
-
+	characterJoints_Torso = physics.newJoint ( "pivot", torso, neck, startX, startY+15)--character_Yoffsets.torso-torso.height*0.5
 	characterJoints_Torso.isLimitEnabled = true
 	characterJoints_Torso:setRotationLimits( -5, 5)
 	
-
 	if createNeckJoint==true then
-		--characterJoints_Neck = physics.newJoint ( "pivot", neck, head, startX, startY+character_Yoffsets.neck)--+character_Yoffsets.neck
-                characterJoints_Neck = physics.newJoint ( "pivot", neck, head, startX, startY+character_Yoffsets.head)--+character_Yoffsets.neck
+		characterJoints_Neck = physics.newJoint ( "pivot", neck, head, startX, startY+character_Yoffsets.head)--+character_Yoffsets.neck
 		characterJoints_Neck.isLimitEnabled = true
 		characterJoints_Neck:setRotationLimits (3, -3)
 	end
-        
-        
         UpdateMiceVisor()
-        
-    
 end
-
-
-
 
 local function PrepareEyes(self)
     
     local folder="src/images/mouse/"
     EyesState=1
     Front=false
-    
-    
-    --SpriteArrow = movieclip.newAnim{ "spritearrow_1.png", "spritearrow_2.png", "spritearrow_3.png" }
-    EyesSide = movieclip.newAnim({ folder.."manny_eyes_1.png", folder.."manny_eyes_2.png", folder.."manny_eyes_3.png"},6,10)
-    EyesFront = movieclip.newAnim({  folder.."manny_eyes_f1.png", folder.."manny_eyes_f2.png", folder.."manny_eyes_f3.png"},16,10)
-    EyesSide:setReferencePoint(display.BottomCenterReferencePoint);
-    EyesFront:setReferencePoint(display.BottomCenterReferencePoint);
-    --Eyes.x=-10000
-    --Eyes.y=-10000
+
+    --EyesSide = movieclip.newAnim({ folder.."manny_eyes_1.png", folder.."manny_eyes_2.png", folder.."manny_eyes_3.png"},6,10)
+    --EyesFront = movieclip.newAnim({  folder.."manny_eyes_f1.png", folder.."manny_eyes_f2.png", folder.."manny_eyes_f3.png"},16,10)
+	
+	EyesSide = movieclip.newAnim({ folder.."manny_eyes_1.png", folder.."manny_eyes_2.png", folder.."manny_eyes_3.png"},6,10,0.5,1)
+    EyesFront = movieclip.newAnim({  folder.."manny_eyes_f1.png", folder.."manny_eyes_f2.png", folder.."manny_eyes_f3.png"},16,10,0.5,1)
+	
+	
     
     EyesSide.isVisible = false;
     EyesFront.isVisible = false;
     character:insert (EyesSide)
     character:insert (EyesFront)
-    
-    --UpdateEyes()
-    
-    --]]--
 end
 
 
@@ -232,19 +212,14 @@ function CreateMouse(self,originX, originY, model)
     local prefix=""
 
     if model=="scotty" then 
-	character_Xoffsets={leg_back=1, arm_back=0, tail=-8, torso=0, neck=0, head=0,leg_front=-2,arm_front=0,wheel=0}
-	character_Yoffsets={leg_back=36, arm_back=0, tail=30, torso=25, neck=20, head=0,leg_front=40,arm_front=0,wheel=44}
-	prefix="_right"
+		character_Xoffsets={leg_back=1, arm_back=0, tail=-8, torso=0, neck=0, head=0,leg_front=-2,arm_front=0,wheel=0}
+		character_Yoffsets={leg_back=36, arm_back=0, tail=30, torso=25, neck=20, head=0,leg_front=40,arm_front=0,wheel=44}
+		prefix="_right"
 
-        elseif model=="manny" then
-
-	character_Xoffsets={leg_back=1, arm_back=0, tail=-4, torso=0, neck=1, head=0,leg_front=-2,arm_front=0,wheel=0}
-	character_Yoffsets={leg_back=41, arm_back=0, tail=30, torso=30, neck=24, head=-3,leg_front=45,arm_front=0,wheel=49}
-	
-	
-    end
-
-
+    elseif model=="manny" then
+		character_Xoffsets={leg_back=1, arm_back=0, tail=-4, torso=0, neck=1, head=0,leg_front=-2,arm_front=0,wheel=0}
+		character_Yoffsets={leg_back=41, arm_back=0, tail=30, torso=30, neck=24, head=-3,leg_front=45,arm_front=0,wheel=49}
+	end
 
 	character = display.newGroup ()
 	 
@@ -261,7 +236,9 @@ function CreateMouse(self,originX, originY, model)
 
 -- Leg Back
 	leg_back = display.newImageRect(folder..model.."_leg_front_stand"..prefix..".png",16,20 )
-	leg_back:setReferencePoint(display.TopCenterReferencePoint);
+	leg_back.anchorY=0;
+	leg_back.anchorY = 0
+	
 	leg_back.x = startX+character_Xoffsets.leg_back
 	leg_back.y = startY+character_Yoffsets.leg_back
 	
@@ -269,7 +246,10 @@ function CreateMouse(self,originX, originY, model)
 
 -- Arm Back
 	arm_back = display.newImageRect(folder..model.."_arm_back"..prefix..".png",30,10 )
-	arm_back:setReferencePoint(display.CenterLeftReferencePoint);
+	arm_back.anchorX=0;
+	
+	arm_back.anchorX = 0
+	
 	arm_back.x = startX+character_Xoffsets.arm_back
 	arm_back.y = startY+character_Yoffsets.arm_back
 	
@@ -277,7 +257,12 @@ function CreateMouse(self,originX, originY, model)
 
 -- Tail
 	tail = display.newImageRect(folder..model.."_tail"..prefix..".png",18,42 )
-	tail:setReferencePoint(display.BottomRightReferencePoint);
+	tail.anchorY=1;
+    tail.anchorX=1;
+	
+	tail.anchorX = 18
+	tail.anchorY = 42
+	
 	tail.x = startX+character_Xoffsets.tail
 	tail.y = startY+character_Yoffsets.tail
 	
@@ -285,7 +270,6 @@ function CreateMouse(self,originX, originY, model)
 
 	-- Torso
 	torso = display.newImageRect(folder..model.."_torso"..prefix..".png",22,26 )
-	torso:setReferencePoint(display.CenterCenterReferencePoint);
 	torso.x = startX+character_Xoffsets.torso
 	torso.y = startY+character_Yoffsets.torso
 	
@@ -294,7 +278,8 @@ function CreateMouse(self,originX, originY, model)
 
 	-- Neck
 	neck = display.newImageRect(folder..model.."_neck"..prefix..".png",14,20 )
-	neck:setReferencePoint(display.BottomCenterReferencePoint);
+	neck.anchorY = 20
+	
 	neck.x = startX+character_Xoffsets.neck
 	neck.y = startY+character_Yoffsets.neck
 	
@@ -318,15 +303,16 @@ function CreateMouse(self,originX, originY, model)
 
 -- Leg Front
 	leg_front = display.newImageRect(folder..model.."_leg_front_stand"..prefix..".png",16,20 )
-	leg_front:setReferencePoint(display.TopCenterReferencePoint);
+	leg_front.anchorY = 0
+	
 	leg_front.x = startX+character_Xoffsets.leg_front
 	leg_front.y = startY+character_Yoffsets.leg_front
-	--leg_front.myName="character"
 	character:insert (leg_front)
 
 -- Arm Front
 	arm_front = display.newImageRect(folder..model.."_arm_front"..prefix..".png",30,10 )
-	arm_front:setReferencePoint(display.CenterLeftReferencePoint);
+	arm_front.anchorX = 0
+	
 	arm_front.x = startX+character_Xoffsets.arm_front
 	arm_front.y = startY+character_Yoffsets.arm_front
 	--arm_front.myName="character"
@@ -356,17 +342,14 @@ function CreateMouse(self,originX, originY, model)
 	physics.addBody (torso, {bounce = 0, density=1, friction = f, shape={-11,-11,11,-11,0,11} })
 	torso.isFixedRotation = true
 	
-	
-	
 	wheel.myName="character"
 	physics.addBody (wheel, { bounce = 1, density=15, friction=f, radius = wheel_r})
-
 
 	createCharacterJoints(startX,startY,1,true)
 	
 	wheel.isBullet=true
 
-        PrepareEyes()
+    PrepareEyes()
 
 	return character
 end
@@ -424,9 +407,10 @@ end
 
 function RemoveMiceVisor(self)
     if mouseVisorTimer~=nil then
-         timer.cancel(mouseVisorTimer);
-         mouseVisorTimer=nil
+        timer.cancel(mouseVisorTimer);
+        mouseVisorTimer=nil
     end
+	
     display.remove(MiceVisor)
     MiceVisor=nil
 end
@@ -573,13 +557,10 @@ function UpdateMiceVisor(self)
             TurnCharacter(nil,-torso.xScale,true)
 
         else
-                
-                
-            
-        
         
             MiceVisor=display.newRect(0, 0, 5, 30)
-            MiceVisor:setReferencePoint( display.BottomCenterReferencePoint )
+			MiceVisor.anchorY = 30
+	
             MiceVisor:setFillColor(0, 255,255, 0)
             game:insert(MiceVisor)
             MiceVisor.x=0
@@ -605,10 +586,7 @@ function TurnCharacter(self,TurnTo,ChangeFace)
 		return false
     end
         
-
     ReadyToTurn=true
-    
-    
 
     if turnTimer~=nil then
         timer.cancel( turnTimer ) 
@@ -624,11 +602,11 @@ end
 
 
 local function ChangeLeg(self)
-        if buttons.physics_paused then
-            return
-        end
-    
-    
+       
+	if buttons.physics_paused then
+        return
+    end
+
 	if(wheel.angularVelocity>50) then
 
 		local m=math.sin(math.rad(leg_front.rotation))
@@ -1003,13 +981,15 @@ function DoTurnCharacter(TurnTo)
 	local s=TurnTo
 	tail.xScale = s
 	if TurnTo==1 then
-		--tail:setReferencePoint(display.BottomRightReferencePoint);
+		tail.anchorX = 18
+		tail.anchorY = 42
 	else
-		--tail:setReferencePoint(display.BottomLeftReferencePoint);
+		tail.anchorX = 0
+		tail.anchorY = 42
 	end
 	
 	
-removeCharacterJoints(true)
+	removeCharacterJoints(true)
 
 
 			leg_back.xScale = s

@@ -245,7 +245,7 @@ end
 function PrepareSpriteArraw()
     
     SpriteArrow = display.newImageRect( "src/images/misc/spritearrow.png",20,26)
-    SpriteArrow:setReferencePoint(display.BottomCenterReferencePoint);
+	SpriteArrow.anchorY = 26
     SpriteArrow.isVisible = false;
     game:insert (SpriteArrow)
 end
@@ -254,12 +254,12 @@ function animateArrow(self)
     
     if(NextSprite~=nil and NextSprite~=-1 and buttons.physics_paused==false) then
         local y=world.WorldSprites[NextSprite].y
-
             SpriteArrow.y=y-30
             transition.to( SpriteArrow, {delay=0, time=200, y=y-20} )  
-
     end
+
 end
+
 function setArrowX(self)
     
     findCheese()
@@ -280,13 +280,10 @@ function setArrowX(self)
         else
             SpriteArrow.isVisible=false
             
-
             NextSprite=nil
-
             FindNextSprite()
-            if NextSprite==-1 then
-                
-            else
+			
+            if NextSprite~=-1 then
                 SpriteArrow.isVisible=true
             end
         end
@@ -313,35 +310,14 @@ function FindNextSprite(self)
             end
         else
             SpriteArrow.isVisible = false;
-            --startcounter
-            
-            
-            
-            --local myclosure= function() 
-                
-            --end
-            
-            --LoseGameTimer=timer.performWithDelay(5000,myclosure,1)
-            
         end
     else
         NextSprite=-1
         SpriteArrow.isVisible = false;
     end
-    
-    
-    
-    
-    --Face_Eyes.x=Face.x+xOffsets.faceeyes
-    --Face_Eyes.y=y+yOffsets.faceeyes
-    
-    --Face_Eyes.isVisible = true;
 end
 
-
-
 local function CreateBodyClone(CurrenBodyIndex,JustDropped)
-    
     
     local OldBody=world.WorldSprites[CurrenBodyIndex]
     local angularVelocity=OldBody.angularVelocity
@@ -359,12 +335,10 @@ local function CreateBodyClone(CurrenBodyIndex,JustDropped)
     local s=sprite_collection.SpriteColection[OldBody.typeIndex]
     
     local NewBody=display.newImageRect( "src/images/sprites/"..s.image,s.width,s.height  )
-    NewBody:setReferencePoint( display.CenterCenterReferencePoint)
+
     local CollisionFilter = { categoryBits = 1, maskBits = 5 }   
     
-    
     if JustDropped then
-        --NewBody:setFillColor(0,0,255,50)
         CollisionFilter = { categoryBits = 1, maskBits = 3 } 
     end
     
@@ -377,8 +351,6 @@ local function CreateBodyClone(CurrenBodyIndex,JustDropped)
     NewBody.myName=OldBody.myName
     NewBody.used=OldBody.used
 
-    
-
     if(s.radius>0) then
         physics.addBody (NewBody, {bounce = s.bounce, density=s.density, friction = s.friction, radius=s.radius, filter=CollisionFilter})
     else
@@ -390,11 +362,7 @@ local function CreateBodyClone(CurrenBodyIndex,JustDropped)
     end 
     
     NewBody.angularVelocity=angularVelocity
-    
-    
     NewBody:setLinearVelocity(lvX,lvY)
-    
-    
     
     return NewBody;
 end
@@ -426,19 +394,16 @@ function DisableSpriteWatch(self)
         else
             return false;
         end
-   end
+	end
     
-    
-    
-   WatchForSprite=-1
-   CameraSpeed=20
-   if(CurrentSprite~=nil and CurrentSprite~=-1) then
-    -- disable bullet
+	WatchForSprite=-1
+	CameraSpeed=20
+	if(CurrentSprite~=nil and CurrentSprite~=-1) then
+		-- disable bullet
         world.WorldSprites[CurrentSprite].isBullet = false
-   end
+	end
    
-   
-   mousecharacter:changeFace(500,2000,{4,3,4,1})
+	mousecharacter:changeFace(500,2000,{4,3,4,1})
 
     if(NextSprite~=nil and NextSprite~=-1) then
         SpriteArrow.isVisible=true
@@ -864,13 +829,13 @@ function Replay(self,MustLoadLevel)
 
         
         LoadingShadow = display.newText(txt , 0, 0, fontName, fontSize )
-        LoadingShadow:setReferencePoint(display.CenterCenterReferencePoint);
+
         LoadingShadow.x=display.contentWidth*0.5+3
         LoadingShadow.y=display.contentHeight*0.5+3
         LoadingShadow:setTextColor(0,0,0)
         
         Loading = display.newText(txt , 0, 0, fontName, fontSize )
-        Loading:setReferencePoint(display.CenterCenterReferencePoint);
+
         Loading.x=display.contentWidth*0.5
         Loading.y=display.contentHeight*0.5
         Loading:setTextColor(255,200,0)

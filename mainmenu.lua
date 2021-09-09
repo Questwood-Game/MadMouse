@@ -54,7 +54,7 @@ local function typeVersion()
         
 
         local QuitText = display.newText( "v.1.1.2", 0, 0, "Grinched", 10 )
-        QuitText:setReferencePoint( display.TopCenterReferencePoint)
+        --QuitText:setReferencePoint( display.TopCenterReferencePoint)
         QuitText.x=175
         QuitText.y=96
 
@@ -169,7 +169,7 @@ local function DrawMainMenuWindow(nextButtonInCenter)
 
         coverDesk = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk:setFillColor(0,0,0, 250)
-        coverDesk:setReferencePoint( display.CenterCenterReferencePoint)
+        --coverDesk:setReferencePoint( display.CenterCenterReferencePoint)
         coverDesk.x=display.contentWidth*0.5
         coverDesk.y=display.contentHeight*0.5
         coverDesk.alpha=0
@@ -531,7 +531,7 @@ function PlayLevel(event)
         
         coverDesk3 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk3:setFillColor(0,0,0, 250)
-        coverDesk3:setReferencePoint( display.TopCenterReferencePoint)
+        --coverDesk3:setReferencePoint( display.TopCenterReferencePoint)
         coverDesk3.x=display.contentWidth*0.5
         coverDesk3.y=0
         coverDesk3.alpha=0
@@ -560,7 +560,7 @@ function Next(event)
     
         coverDesk3 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk3:setFillColor(0,0,0, 250)
-        coverDesk3:setReferencePoint( display.TopCenterReferencePoint)
+        --coverDesk3:setReferencePoint( display.TopCenterReferencePoint)
         coverDesk3.x=display.contentWidth*0.5
         coverDesk3.y=0
         coverDesk3.alpha=0

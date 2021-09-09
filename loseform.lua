@@ -47,48 +47,47 @@ end
 
 
 local function DrawLoserWindow(RunOutOfItems)
-        CancelAllTransition()
-        coverDesk = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
+    
+    CancelAllTransition()
+    coverDesk = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
 	coverDesk:setFillColor(0,0,0, 250)
-        coverDesk:setReferencePoint( display.CenterCenterReferencePoint)
-        coverDesk.x=display.contentWidth*0.5
-        coverDesk.y=display.contentHeight*0.5--0
-        coverDesk.alpha=0
-	--game:insert (coverDesk)
-        AllTransition[#AllTransition+1]=transition.to( coverDesk, { time=500, alpha=0.8 } )
-                    
-                        
+        
+    coverDesk.x=display.contentWidth*0.5
+    coverDesk.y=display.contentHeight*0.5--0
+    coverDesk.alpha=0
+
+    AllTransition[#AllTransition+1]=transition.to( coverDesk, { time=500, alpha=0.8 } )
+
+
 	loser_window = display.newGroup();
 
-        loser_window.width= 400
-        loser_window.height= 300
+	loser_window.width= 400
+    loser_window.height= 300
         
 	loser_window.x =display.contentWidth*0.5-200
-	loser_window.y =-300-- 0-loser_window.height
-        loser_window.alpha=1
+	loser_window.y = - 300
+    loser_window.alpha=1
         
 
-        local stageFile=nil
-        if RunOutOfItems then
-            stageFile="tryagainstage.jpg"
-        else
-            stageFile="loststage.jpg"
-        end
+    local stageFile=nil
+    if RunOutOfItems then
+        stageFile="tryagainstage.jpg"
+    else
+		stageFile="loststage.jpg"
+    end
         
-        local board = display.newImageRect("src/images/stages/"..stageFile,400,350 )
-        --board:setFillColor(0,0,0, 0)
-        board:setReferencePoint( display.TopLeftReferencePoint )
-        board.x=0
-        board.y=0
+    local board = display.newImageRect("src/images/stages/"..stageFile,400,350 )
+
+    board:setReferencePoint( display.TopLeftReferencePoint )
+    board.x=0
+    board.y=0
 	loser_window:insert (board)
---[[]]--
 
-
-        local onSimulator = system.getInfo( "environment" ) == "simulator"
-        local platformVersion = system.getInfo( "platformVersion" )
-        local olderVersion = tonumber(string.sub( platformVersion, 1, 1 )) < 4
-        local fontName = "Grinched"
-        local fontSize = 50
+    local onSimulator = system.getInfo( "environment" ) == "simulator"
+    local platformVersion = system.getInfo( "platformVersion" )
+    local olderVersion = tonumber(string.sub( platformVersion, 1, 1 )) < 4
+    local fontName = "Grinched"
+    local fontSize = 50
 
         -- if on older device (and not on simulator) ...
        
@@ -98,7 +97,7 @@ local function DrawLoserWindow(RunOutOfItems)
         --        fontSize = 48
         --    end
         --end
- --[[]]--
+ 
         local txt=nil;
         local ox=0;
         if(thegame.GameLanguage=="rus") then
@@ -192,16 +191,12 @@ end
 
 function DoReplay(self)
     CancelAllTransition()
-    --if (coverDesk~=nil and coverDesk.x~=nil ) then
-    --if coverDesk then
-        display.remove(coverDesk)
-        coverDesk=nil
-    --end
     
-    --if coverDesk2 then
-        display.remove(coverDesk2)
-        coverDesk2=nil
-    --end
+    display.remove(coverDesk)
+    coverDesk=nil
+    
+    display.remove(coverDesk2)
+    coverDesk2=nil
     
     display.remove(ButtonReset)
     ButtonReset=nil
@@ -209,10 +204,6 @@ function DoReplay(self)
     display.remove(ButtonMenu)
     ButtonMenu=nil
     
-    --if ButtonNext then
-      --  display.remove(ButtonNext)
---        ButtonNext=nil
-  --  end
     display.remove(loser_window)
     loser_window=nil
 
@@ -229,8 +220,9 @@ local function ReplayEvent()
         ButtonMenu=nil
     
         coverDesk2 = display.newRect(0, 0,display.contentWidth*2,display.contentHeight*2)
-	coverDesk2:setFillColor(0,0,0, 250)
-        coverDesk2:setReferencePoint( display.TopCenterReferencePoint)
+		coverDesk2:setFillColor(0,0,0, 250)
+		coverDesk2.anchorY = 0
+        
         coverDesk2.x=display.contentWidth*0.5
         coverDesk2.y=0
         coverDesk2.alpha=0

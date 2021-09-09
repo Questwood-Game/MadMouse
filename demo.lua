@@ -21,11 +21,10 @@ local timerId={}
 local AllTransition={}
 
 local function CancelAllTransition()
-    for i=1, #AllTransition  do
 
+    for i=1, #AllTransition  do
         transition.cancel(AllTransition[i])
         AllTransition[i]=nil
-
     end
     i=nil
     AllTransition={}
@@ -34,28 +33,23 @@ end
 
 function drawFinger(self,x,y)
     CancelAllTransition()
-    StartX  =x
-    StartY  =y
+    StartX  = x
+    StartY  = y
         
     FingerShadow = display.newImageRect( "src/images/misc/finger.png",68,76)
     FingerShadow:setFillColor(0, 0,0, 100)
-    FingerShadow:setReferencePoint(display.CenterCenterReferencePoint);
     FingerShadow.x=x-dX
     FingerShadow.y=y-dY
         
     Finger = display.newImageRect( "src/images/misc/finger.png",68,76)
-    Finger:setReferencePoint(display.CenterCenterReferencePoint);
     Finger.x=x
     Finger.y=y
-    --game:insert (Finger)
 end
 
 function DoMoveTo(x,y,scale_from,scale_to,speed)
     CancelAllTransition()
     AllTransition[#AllTransition+1]=transition.to( FingerShadow, {delay=0, time=speed+50, x=x-dX, y=y-dY,  xScale=scale_from,yScale=scale_from} )
     AllTransition[#AllTransition+1]=transition.to( Finger, {delay=0, time=speed, x=x, y=y,                  xScale=scale_from,yScale=scale_from} )
-
-
     AllTransition[#AllTransition+1]=transition.to( FingerShadow, {delay=speed+200, time=200, x=x-dX, y=y-dY,      xScale=scale_to,yScale=scale_to} )
     AllTransition[#AllTransition+1]=transition.to( Finger, {delay=speed+200, time=200, x=x, y=y,                  xScale=scale_to,yScale=scale_to} )
 end
